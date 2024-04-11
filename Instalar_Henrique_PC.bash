@@ -128,6 +128,9 @@ function run_as_root() {
     # Instalando o Draw.io
     dnf install --assumeyes https://github.com/jgraph/drawio-desktop/releases/download/v24.1.0/drawio-x86_64-24.1.0.rpm
 
+    # Instalando o Balena Etcher
+    dnf install --assumeyes https://github.com/balena-io/etcher/releases/download/v1.18.11/balena-etcher-1.18.11.x86_64.rpm
+
     # Desinstalando pacotes inúteis
     ## Extensões Gnome Shell
     dnf autoremove --assumeyes gnome-shell-extension-background-logo
