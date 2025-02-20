@@ -24,8 +24,8 @@ cp "/etc/chrony.conf" "/etc/chrony.conf.backup.$(date "+%d-%m-%Y_%H:%M:%S")"
 
 	# caso deseje pode configurar servidores adicionais com NTS, como os da cloudflare e netnod
 	# nesse caso basta descomentar as linhas a seguir
-	echo "server time.cloudflare.com iburst nts"
-	echo "server nts.netnod.se iburst nts"
+	echo "#server time.cloudflare.com iburst nts"
+	echo "#server nts.netnod.se iburst nts"
 
 	# arquivo usado para manter a informação do atraso do seu relógio local
 	echo "driftfile /var/lib/chrony/chrony.drift"
