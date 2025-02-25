@@ -43,7 +43,7 @@ function run_as_root() {
   bash ./ConfigurarNtp.bash
 
   # Configurando DNF Automatic
-  bash ./ConfigurarAtualizacoesAutomaticasDnfAutomatic.bash
+  bash ./ConfigurarAtualizacoesAutomaticasDnfAutomaticRaspiberryPi.bash
 
   # Instalando pacotes dnf
   instalar_pacotes_dnf
