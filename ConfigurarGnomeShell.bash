@@ -7,9 +7,11 @@ fi
 
 # Instalando extensões e apps
 sudo dnf install --assumeyes gnome-extensions-app
-sudo dnf install --assumeyes gnome-shell-extension-dash-to-dock
 sudo dnf install --assumeyes chrome-gnome-shell
 sudo dnf install --assumeyes gnome-tweaks
+sudo dnf install --assumeyes gnome-shell-extension-dash-to-dock
+sudo dnf install --assumeyes gnome-shell-extension-top-icons
+sudo dnf install --assumeyes gnome-shell-extension-caffeine
 
 # Desabilitando hot corners
 gsettings set org.gnome.desktop.interface enable-hot-corners false
@@ -48,3 +50,11 @@ gnome-extensions enable dash-to-dock@micxgx.gmail.com
 # Instalando e Habilitando o Bing Wallpaper
 gnome-extensions install BingWallpaper@ineffable-gmail.com
 gnome-extensions enable BingWallpaper@ineffable-gmail.com
+
+# Instalando e Habilitando o gnome-shell-extension-appindicator
+gnome-extensions install top-icons@gnome-shell-extensions.gcampax.github.com
+gnome-extensions enable top-icons@gnome-shell-extensions.gcampax.github.com
+
+# Instalando e Habilitando o gnome-shell-extension-caffeine
+gnome-extensions install caffeine@patapon.info
+gnome-extensions enable caffeine@patapon.info
