@@ -165,10 +165,6 @@ function run_as_root() {
     while true; do
       snap install kotlin --classic && break
     done
-
-    while true; do
-      snap install skype --classic && break
-    done
     
     while true; do
       snap install postman && break
