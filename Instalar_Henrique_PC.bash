@@ -109,7 +109,6 @@ function run_as_root() {
     dnf install --assumeyes gimp
     dnf install --assumeyes gedit
     dnf install --assumeyes ImageMagick
-    dnf install --assumeyes wine.i686 # Não disponível no CentOS ou RHEL
     dnf install --assumeyes pdftk-java
     dnf install --assumeyes wol
     dnf install --assumeyes brasero
@@ -128,6 +127,10 @@ function run_as_root() {
     # Instalando ferramentas de segurança
     dnf install --assumeyes chkrootkit
     dnf install --assumeyes lynis
+
+    # Instalando xorg
+    dnf install --assumeyes xorg-x11-server-Xorg
+    dnf install --assumeyes xorg-x11-xauth
 
     # Instalando o Draw.io
     dnf install --assumeyes https://github.com/jgraph/drawio-desktop/releases/download/v24.1.0/drawio-x86_64-24.1.0.rpm
@@ -239,6 +242,9 @@ function run_as_root() {
 
   # Instalando o Secure Delete
   bash ./Install-Srm.bash
+
+  # Instalando o Unity Hub
+  bash ./Install-UnityHub.bash
 
   # Instalando pacotes dnf
   instalar_pacotes_dnf
