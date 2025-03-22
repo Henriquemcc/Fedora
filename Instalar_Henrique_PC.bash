@@ -109,7 +109,6 @@ function run_as_root() {
     dnf install --assumeyes gimp
     dnf install --assumeyes gedit
     dnf install --assumeyes ImageMagick
-    dnf install --assumeyes wine.i686 # Não disponível no CentOS ou RHEL
     dnf install --assumeyes pdftk-java
     dnf install --assumeyes wol
     dnf install --assumeyes brasero
