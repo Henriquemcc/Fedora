@@ -128,6 +128,10 @@ function run_as_root() {
     dnf install --assumeyes chkrootkit
     dnf install --assumeyes lynis
 
+    # Instalando xorg
+    dnf install --assumeyes xorg-x11-server-Xorg
+    dnf install --assumeyes xorg-x11-xauth
+
     # Instalando o Draw.io
     dnf install --assumeyes https://github.com/jgraph/drawio-desktop/releases/download/v24.1.0/drawio-x86_64-24.1.0.rpm
 
