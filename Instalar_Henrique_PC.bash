@@ -243,6 +243,9 @@ function run_as_root() {
   # Instalando o Secure Delete
   bash ./Install-Srm.bash
 
+  # Instalando o Unity Hub
+  bash ./Install-UnityHub.bash
+
   # Instalando pacotes dnf
   instalar_pacotes_dnf
 
