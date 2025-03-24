@@ -90,6 +90,7 @@ function run_as_root() {
     dnf install --assumeyes android-tools
     dnf install --assumeyes libstdc++-devel
     dnf install --assumeyes perf
+    dnf install --assumeyes python3-pip
 
     # Instalando outros programas
     dnf install --assumeyes stacer
