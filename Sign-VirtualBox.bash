@@ -46,37 +46,37 @@ function sign_virtualbox_modules() {
 run_as_root
 
 # Installing requirements
-sudo dnf install --assumeyes kmod
-sudo dnf install --assumeyes coreutils
-sudo dnf install --assumeyes kernel-devel
-sudo dnf install --assumeyes kernel-devel-"$(uname -r)"
-sudo dnf install --assumeyes kernel-headers
-sudo dnf install --assumeyes akmods
-sudo dnf install --assumeyes dkms
-sudo dnf install --assumeyes qt5-qtx11extras
-sudo dnf install --assumeyes elfutils-libelf-devel
-sudo dnf install --assumeyes zlib-devel
-sudo dnf install --assumeyes @development-tools
+dnf install --assumeyes kmod
+dnf install --assumeyes coreutils
+dnf install --assumeyes kernel-devel
+dnf install --assumeyes kernel-devel-"$(uname -r)"
+dnf install --assumeyes kernel-headers
+dnf install --assumeyes akmods
+dnf install --assumeyes dkms
+dnf install --assumeyes qt5-qtx11extras
+dnf install --assumeyes elfutils-libelf-devel
+dnf install --assumeyes zlib-devel
+dnf install --assumeyes @development-tools
 
 # Installing kernel uek devel for Oracle Linux
 if [ "$(get_os_type)" == "ol" ]; then
-  sudo dnf install --assumeyes kernel-uek-devel
-  sudo dnf install --assumeyes kernel-uek-devel-"$(uname -r)"
+  dnf install --assumeyes kernel-uek-devel
+  dnf install --assumeyes kernel-uek-devel-"$(uname -r)"
 fi
 
 sign_virtualbox_modules
 
 # Unloading KVM kernel modules
-sudo modprobe -r kvm_intel kvm
+modprobe -r kvm_intel kvm
 
 # Loading VirtualBox kernel modules
-sudo modprobe vboxdrv
+modprobe vboxdrv
 
 # Rebuilding kernel akmod packages
-sudo akmods
+akmods
 
 # Restarting VirtualBox service
-sudo systemctl restart vboxdrv.service
+systemctl restart vboxdrv.service
 
 # Configuring VirtualBox
-sudo /sbin/vboxconfig
+/sbin/vboxconfig
