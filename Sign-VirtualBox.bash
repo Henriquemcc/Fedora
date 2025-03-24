@@ -66,6 +66,9 @@ fi
 
 sign_virtualbox_modules
 
+# Unloading KVM kernel modules
+sudo modprobe -r kvm_intel kvm
+
 # Loading VirtualBox kernel modules
 sudo modprobe vboxdrv
 
