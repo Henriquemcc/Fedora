@@ -18,7 +18,3 @@ cp "/etc/docker/daemon.json" "/etc/docker/daemon.json.backup.$(date "+%d-%m-%Y_%
   echo "]"
   echo "}"
 } > "/etc/docker/daemon.json"
-
-# Permitindo que aplicações gráficas rodem, montando a pasta '/tmp/.X11-unix'
-echo "xhost +local:" >> /etc/profile.d/xhost.sh
-chmod +x /etc/profile.d/xhost.sh
