@@ -21,5 +21,5 @@ Distribuições Linux suportadas:
 Com o Fedora, CentOS, RHEL, AlmaLinux ou Oracle Linux estando instalado em seu computador, abra o programa 'Terminal' e nele copie e cole o seguinte comando:
 
 ```
-path_old_current_dir="$(pwd)";sudo dnf install --assumeyes curl unzip bash;url_file="https://github.com/Henriquemcc/Fedora/archive/refs/heads/main.zip";path_download_file="/tmp/Fedora_main.zip";curl -L "$url_file" > "$path_download_file";unzip -o "$path_download_file" -d "/tmp";cd "/tmp/Fedora-main" || exit 1;bash ./Executar.bash;cd "$path_old_current_dir" || exit 1;
+curl -L "https://github.com/Henriquemcc/Fedora/raw/refs/heads/main/Iniciar.bash" | bash
 ```
