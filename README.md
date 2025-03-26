@@ -21,5 +21,5 @@ Distribuições Linux suportadas:
 Com o Fedora, CentOS, RHEL, AlmaLinux ou Oracle Linux estando instalado em seu computador, abra o programa 'Terminal' e nele copie e cole o seguinte comando:
 
 ```
-curl -L "https://github.com/Henriquemcc/Fedora/raw/refs/heads/main/Iniciar.bash" | bash
+curl -L -O "https://github.com/Henriquemcc/Fedora/raw/refs/heads/main/Iniciar.bash" && bash ./Iniciar.bash
 ```
