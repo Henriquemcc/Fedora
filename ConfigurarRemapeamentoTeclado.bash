@@ -41,6 +41,3 @@ service_file_path="/etc/systemd/system/${service_name}"
 
 # Reload systemd to recognize the new service
 systemctl daemon-reload
-
-# Start the service
-systemctl start ${service_name}
