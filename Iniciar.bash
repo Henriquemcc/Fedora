@@ -3,16 +3,13 @@
 # Salvando o path anterior
 path_old_current_dir="$(pwd)"
 
-# Instalando os programas necessários
-sudo dnf install --assumeyes unzip
-
 # Baixando o arquivo zip do repositório
-url_file="https://github.com/Henriquemcc/Fedora/archive/refs/heads/main.zip"
+url_file="https://github.com/Henriquemcc/Fedora/archive/refs/heads/main.tar.gz"
 path_download_file="/tmp/Fedora_main.zip"
 curl -L "$url_file" > "$path_download_file"
 
-# Extraíndo arquivo zip
-unzip -o "$path_download_file" -d "/tmp"
+# Extraíndo arquivo tar
+tar -xzf "$path_download_file" -C "/tmp"
 
 # Entrando dentro da pasta
 cd "/tmp/Fedora-main" || exit 1
