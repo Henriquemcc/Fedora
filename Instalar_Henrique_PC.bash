@@ -90,6 +90,7 @@ function run_as_root() {
     dnf install --assumeyes android-tools
     dnf install --assumeyes libstdc++-devel
     dnf install --assumeyes perf
+    dnf install --assumeyes python3-pip
 
     # Instalando outros programas
     dnf install --assumeyes stacer
@@ -276,6 +277,7 @@ function run_as_root() {
   # Instalando o VirtualBox
   bash ./Install-OracleVirtualBox.bash
   bash ./Sign-VirtualBox.bash
+  bash ./ConfigurarVirtualbox.bash
 
   # Instalando o Peazip
   bash ./Install-Peazip.bash
@@ -288,6 +290,9 @@ function run_as_root() {
 
   # Instalando GitHub Cli
   bash ./Install-GithubCli.bash
+
+  # Configurando o remapeamento do teclado
+  bash ./ConfigurarRemapeamentoTeclado.bash
 }
 
 # Configurando o Gnome Shell
