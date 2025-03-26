@@ -4,7 +4,7 @@
 path_old_current_dir="$(pwd)"
 
 # Instalando os programas necessários
-sudo dnf install --assumeyes curl unzip bash
+sudo dnf install --assumeyes unzip
 
 # Baixando o arquivo zip do repositório
 url_file="https://github.com/Henriquemcc/Fedora/archive/refs/heads/main.zip"
