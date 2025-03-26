@@ -39,5 +39,5 @@ service_file_path="/etc/systemd/system/${service_name}"
   echo "[Install]"
 } > "$service_file_path"
 
-# Reload systemd to recognize the new service
+# Recarregando systemd para reconhecer o novo serviço
 systemctl daemon-reload
