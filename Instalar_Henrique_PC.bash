@@ -277,6 +277,7 @@ function run_as_root() {
   # Instalando o VirtualBox
   bash ./Install-OracleVirtualBox.bash
   bash ./Sign-VirtualBox.bash
+  bash ./ConfigurarVirtualbox.bash
 
   # Instalando o Peazip
   bash ./Install-Peazip.bash
