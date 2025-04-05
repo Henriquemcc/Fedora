@@ -43,6 +43,8 @@ if [ "$(is_kernel_compatible_with_ntfs3_module)" == 1 ]; then
   mkdir -p "$load_modules_folder"
   echo "ntfs3" > "$load_modules_folder/ntfs3.conf"
   modprobe ntfs3
+
+# Installing ntfs-3g
 else
   dnf install --assumeyes ntfs-3g
 fi
