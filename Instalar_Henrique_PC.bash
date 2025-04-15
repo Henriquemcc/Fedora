@@ -73,10 +73,10 @@ function run_as_root() {
     dnf install --assumeyes libvirt
 
     # Instalando os Sistemas de arquivos não nativos do linux
-    dnf install --assumeyes ntfs-3g
-    dnf install --assumeyes exfat-utils
+    # dnf install --assumeyes ntfs-3g # Usando Enable-Ntfs no lugar
+    # dnf install --assumeyes exfat-utils
     dnf install --assumeyes fuse
-    dnf install --assumeyes fuse-exfat
+    # dnf install --assumeyes fuse-exfat # Usando Enable-ExFat no lugar
 
     # Instalando as Ferramentas de desenvolvimento
     dnf install --assumeyes golang
@@ -213,6 +213,10 @@ function run_as_root() {
     # Instalando Gnome Clock
     flatpak install --assumeyes https://dl.flathub.org/repo/appstream/org.gnome.clocks.flatpakref
   }
+
+  # Adicionando suporte ao NTFS e ao Ex-Fat (de preferência por módulo do Kernel)
+  bash ./Enable-Ntfs.bash
+  bash ./Enable-ExFat.bash
 
   # Configurando Firewalld
   bash ./ConfigurarFirewalld.bash
