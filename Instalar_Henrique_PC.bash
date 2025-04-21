@@ -35,8 +35,7 @@ function run_as_root() {
     bash ./Enable-RpmFusion.bash
 
     # Instalando o driver da Nvidia
-    dnf install --assumeyes akmod-nvidia
-    dnf install --assumeyes xorg-x11-drv-nvidia-cuda
+    bash ./Install-NvidiaDriverRpmFusion.bash
 
     # Trocando o pacote ffmpeg-free por ffmpeg
     dnf swap --assumeyes --allowerasing ffmpeg-free ffmpeg
