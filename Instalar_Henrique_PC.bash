@@ -301,6 +301,9 @@ function run_as_root() {
 # Configurando o Gnome Shell
 bash ./ConfigurarGnomeShell.bash
 
+# Configurando o Git
+bash ./ConfigurarGit.bash
+
 # Instalando o TechnicLauncher
 bash ./Install-TechnicLauncher.bash
 
