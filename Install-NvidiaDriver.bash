@@ -40,3 +40,6 @@ dnf install --assumeyes cuda-toolkit
 
 # Installing GPUDirect Filesystem
 dnf install --assumeyes nvidia-gds
+
+# Enabling kernel module
+echo "nvidia" > "/etc/modules-load.d/nvidia.conf"
