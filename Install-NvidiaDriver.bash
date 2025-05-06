@@ -33,7 +33,7 @@ elif [ "$(get_os_type)" == "rhel" ] || [ "$(get_os_type)" == "centos" ] || [ "$(
 fi
 
 # Installing Nvidia driver
-dnf module install --assumeyes nvidia-driver
+dnf module install --assumeyes --allowerasing nvidia-driver
 
 # Installing Nvidia Cuda ToolKit
 dnf install --assumeyes cuda-toolkit
