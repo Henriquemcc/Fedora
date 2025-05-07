@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function install_rpm_packages() {
   local array_name="$1[@]"
   local rpm_package_to_be_installed=("${!array_name}")
