@@ -22,6 +22,9 @@ function run_as_root() {
   # Instala pacotes dnf
   function instalar_pacotes_dnf() {
 
+    # Obtendo funções install_rpm_packages e uninstall_rpm_packages
+    source ./RpmPackageManager.bash
+
     # Configurando gerenciador de pacotes DNF
     bash ./ConfigurarDnfPackageManagerHenrique-PC.bash
 
@@ -146,26 +149,10 @@ function run_as_root() {
     pacotes_a_serem_removidos+=("gnome-shell-extension-window-list")
 
     # Realizando instalações
-    for pacote in "${pacotes_a_serem_instalados[@]}" ; do
-      if [ "$(command -v dnf)" ]; then
-        dnf install --assumeyes "$pacote"
-      elif [ "$(command -v yum)" ]; then
-        yum install --assumeyes "$pacote"
-      elif [ "$(command -v rpm-ostree)" ]; then
-        rpm-ostree install --assumeyes "$pacote"
-      fi
-    done
+    install_rpm_packages pacotes_a_serem_instalados
 
     # Realizando desinstalações
-    for pacote in "${pacotes_a_serem_removidos[@]}" ; do
-      if [ "$(command -v dnf)" ]; then
-        dnf remove --assumeyes "$pacote"
-      elif [ "$(command -v yum)" ]; then
-        yum remove --assumeyes "$pacote"
-      elif [ "$(command -v rpm-ostree)" ]; then
-        rpm-ostree remove --assumeyes "$pacote"
-      fi
-    done
+    uninstall_rpm_packages pacotes_a_serem_removidos
   }
 
   # Instala pacotes snap
