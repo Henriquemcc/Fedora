@@ -138,7 +138,7 @@ function run_as_root() {
     pacotes_a_serem_instalados+=("xorg-x11-xauth")
 
     # Instalando o Draw.io
-    pacotes_a_serem_instalados+=("https://github.com/jgraph/drawio-desktop/releases/download/v24.1.0/drawio-x86_64-24.1.0.rpm")
+    pacotes_a_serem_instalados+=("https://github.com/jgraph/drawio-desktop/releases/download/v26.2.15/drawio-x86_64-26.2.15.rpm")
 
     # Desinstalando pacotes inúteis
     ## Extensões Gnome Shell
