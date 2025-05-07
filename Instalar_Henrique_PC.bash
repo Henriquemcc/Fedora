@@ -147,12 +147,24 @@ function run_as_root() {
 
     # Realizando instalações
     for pacote in "${pacotes_a_serem_instalados[@]}" ; do
-      dnf install --assumeyes "$pacote"
+      if [ "$(command -v dnf)" ]; then
+        dnf install --assumeyes "$pacote"
+      elif [ "$(command -v yum)" ]; then
+        yum install --assumeyes "$pacote"
+      elif [ "$(command -v rpm-ostree)" ]; then
+        rpm-ostree install --assumeyes "$pacote"
+      fi
     done
 
     # Realizando desinstalações
     for pacote in "${pacotes_a_serem_removidos[@]}" ; do
-      dnf remove --assumeyes "$pacote"
+      if [ "$(command -v dnf)" ]; then
+        dnf remove --assumeyes "$pacote"
+      elif [ "$(command -v yum)" ]; then
+        yum remove --assumeyes "$pacote"
+      elif [ "$(command -v rpm-ostree)" ]; then
+        rpm-ostree remove --assumeyes "$pacote"
+      fi
     done
   }
 
