@@ -37,9 +37,6 @@ function run_as_root() {
     # Habilitando RPM Fusion
     bash ./Enable-RpmFusion.bash
 
-    # Instalando o driver da Nvidia
-    bash ./Install-NvidiaDriverRpmFusion.bash
-
     # Trocando o pacote ffmpeg-free por ffmpeg
     dnf swap --assumeyes --allowerasing ffmpeg-free ffmpeg
 
