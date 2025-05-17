@@ -8,16 +8,16 @@ run_as_root
 
 # https://linuxize.com/post/create-a-linux-swap-file/
 # Criando arquivo
-fallocate -l 32G /swapfile
+fallocate -l 32G /swapfile || exit 1
 
 # Alterando permissões
-chmod 600 /swapfile
+chmod 600 /swapfile || exit 1
 
 # Configurando swap
-mkswap /swapfile
+mkswap /swapfile || exit 1
 
 # Habilitando swapfile
-swapon /swapfile
+swapon /swapfile || exit 1
 
 # Adicionando swapfile ao arquivo fstab
 echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
