@@ -204,6 +204,9 @@ function run_as_root() {
     # Instalando o BitWarden
     flatpak install --assumeyes https://dl.flathub.org/repo/appstream/com.bitwarden.desktop.flatpakref
 
+    # Instalando o Calibre
+    flatpak install --assumeyes https://dl.flathub.org/repo/appstream/com.calibre_ebook.calibre.flatpakref
+
     # Instalando o Audacity
     flatpak install --assumeyes https://dl.flathub.org/repo/appstream/org.audacityteam.Audacity.flatpakref
 
