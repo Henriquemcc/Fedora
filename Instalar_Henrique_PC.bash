@@ -22,6 +22,9 @@ function run_as_root() {
   # Instala pacotes dnf
   function instalar_pacotes_dnf() {
 
+    # Obtendo funções install_rpm_packages e uninstall_rpm_packages
+    source ./RpmPackageManager.bash
+
     # Configurando gerenciador de pacotes DNF
     bash ./ConfigurarDnfPackageManagerHenrique-PC.bash
 
@@ -34,112 +37,119 @@ function run_as_root() {
     # Habilitando RPM Fusion
     bash ./Enable-RpmFusion.bash
 
-    # Instalando o driver da Nvidia
-    bash ./Install-NvidiaDriverRpmFusion.bash
-
     # Trocando o pacote ffmpeg-free por ffmpeg
     dnf swap --assumeyes --allowerasing ffmpeg-free ffmpeg
 
+    # Array de pacotes RPM
+    pacotes_a_serem_instalados=()
+    pacotes_a_serem_removidos=()
+
     # Instalando o KeepassXC
-    dnf install --assumeyes keepassxc
+    pacotes_a_serem_instalados+=("keepassxc")
 
     # Instalando o Libreoffice
-    dnf install --assumeyes libreoffice-writer
-    dnf install --assumeyes libreoffice-calc
-    dnf install --assumeyes libreoffice-impress
-    dnf install --assumeyes libreoffice-math
-    dnf install --assumeyes libreoffice-draw
-    dnf install --assumeyes libreoffice-langpack-pt-BR
-    dnf install --assumeyes libreoffice-langpack-en
-    dnf install --assumeyes unoconv
+    pacotes_a_serem_instalados+=("libreoffice-writer")
+    pacotes_a_serem_instalados+=("libreoffice-calc")
+    pacotes_a_serem_instalados+=("libreoffice-impress")
+    pacotes_a_serem_instalados+=("libreoffice-math")
+    pacotes_a_serem_instalados+=("libreoffice-draw")
+    pacotes_a_serem_instalados+=("libreoffice-langpack-pt-BR")
+    pacotes_a_serem_instalados+=("libreoffice-langpack-en")
+    pacotes_a_serem_instalados+=("unoconv")
 
     # Instalando o Gnome Epiphany
-    dnf install --assumeyes epiphany
+    pacotes_a_serem_instalados+=("epiphany")
 
     # Instalando o File Roller
-    dnf install --assumeyes file-roller
-    dnf install --assumeyes file-roller-nautilus
+    pacotes_a_serem_instalados+=("file-roller")
+    pacotes_a_serem_instalados+=("file-roller-nautilus")
 
     # Instalando a Impressora HP
-    dnf install --assumeyes hplip
+    pacotes_a_serem_instalados+=("hplip")
 
     # Instalando o Suporte a arquivos 7zip
-    dnf install --assumeyes p7zip-plugins
-    dnf install --assumeyes p7zip
+    pacotes_a_serem_instalados+=("p7zip-plugins")
+    pacotes_a_serem_instalados+=("p7zip")
 
     # Instalando o KVM
-    dnf install --assumeyes qemu-kvm
-    dnf install --assumeyes libvirt
+    pacotes_a_serem_instalados+=("qemu-kvm")
+    pacotes_a_serem_instalados+=("libvirt")
 
     # Instalando os Sistemas de arquivos não nativos do linux
-    # dnf install --assumeyes ntfs-3g # Usando Enable-Ntfs no lugar
-    # dnf install --assumeyes exfat-utils
-    dnf install --assumeyes fuse
-    # dnf install --assumeyes fuse-exfat # Usando Enable-ExFat no lugar
+    # pacotes_a_serem_instalados+=("ntfs-3g") # Usando Enable-Ntfs no lugar
+    # pacotes_a_serem_instalados+=("exfat-utils")
+    pacotes_a_serem_instalados+=("fuse")
+    # pacotes_a_serem_instalados+=("fuse-exfat") # Usando Enable-ExFat no lugar
 
     # Instalando as Ferramentas de desenvolvimento
-    dnf install --assumeyes golang
-    dnf install --assumeyes gcc
-    dnf install --assumeyes gcc-c++
-    dnf install --assumeyes dotnet-sdk-5.0
-    dnf install --assumeyes aspnetcore-runtime-5.0
-    dnf install --assumeyes dotnet-runtime-5.0
-    dnf install --assumeyes git
-    dnf install --assumeyes git-lfs
-    dnf install --assumeyes android-tools
-    dnf install --assumeyes libstdc++-devel
-    dnf install --assumeyes perf
-    dnf install --assumeyes python3-pip
+    pacotes_a_serem_instalados+=("golang")
+    pacotes_a_serem_instalados+=("gcc")
+    pacotes_a_serem_instalados+=("gcc-c++")
+    pacotes_a_serem_instalados+=("dotnet-sdk-5.0")
+    pacotes_a_serem_instalados+=("aspnetcore-runtime-5.0")
+    pacotes_a_serem_instalados+=("dotnet-runtime-5.0")
+    pacotes_a_serem_instalados+=("git")
+    pacotes_a_serem_instalados+=("git-lfs")
+    pacotes_a_serem_instalados+=("android-tools")
+    pacotes_a_serem_instalados+=("libstdc++-devel")
+    pacotes_a_serem_instalados+=("perf")
+    pacotes_a_serem_instalados+=("python3-pip")
 
     # Instalando outros programas
-    dnf install --assumeyes stacer
-    dnf install --assumeyes qt5-qtcharts
-    dnf install --assumeyes vlc
-    dnf install --assumeyes libdvdcss # Não disponível no CentOS ou RHEL
-    dnf install --assumeyes qt5-qtsvg
-    dnf install --assumeyes youtube-dl
-    dnf install --assumeyes yt-dlp
-    dnf install --assumeyes snapd
-    dnf install --assumeyes flatpak
-    dnf install --assumeyes qbittorrent
-    dnf install --assumeyes ffmpeg
-    dnf install --assumeyes steam
-    dnf install --assumeyes mokutil
-    dnf install --assumeyes fdupes
-    dnf install --assumeyes dconf-editor
-    dnf install --assumeyes gimp
-    dnf install --assumeyes gedit
-    dnf install --assumeyes ImageMagick
-    dnf install --assumeyes pdftk-java
-    dnf install --assumeyes wol
-    dnf install --assumeyes brasero
-    dnf install --assumeyes nmap
-    dnf install --assumeyes rclone
-    dnf install --assumeyes wireshark
+    pacotes_a_serem_instalados+=("stacer")
+    pacotes_a_serem_instalados+=("qt5-qtcharts")
+    pacotes_a_serem_instalados+=("vlc")
+    pacotes_a_serem_instalados+=("libdvdcss") # Não disponível no CentOS ou RHEL
+    pacotes_a_serem_instalados+=("qt5-qtsvg")
+    pacotes_a_serem_instalados+=("youtube-dl")
+    pacotes_a_serem_instalados+=("yt-dlp")
+    pacotes_a_serem_instalados+=("snapd")
+    pacotes_a_serem_instalados+=("flatpak")
+    pacotes_a_serem_instalados+=("qbittorrent")
+    pacotes_a_serem_instalados+=("ffmpeg")
+    pacotes_a_serem_instalados+=("steam")
+    pacotes_a_serem_instalados+=("mokutil")
+    pacotes_a_serem_instalados+=("fdupes")
+    pacotes_a_serem_instalados+=("dconf-editor")
+    pacotes_a_serem_instalados+=("gimp")
+    pacotes_a_serem_instalados+=("gedit")
+    pacotes_a_serem_instalados+=("ImageMagick")
+    pacotes_a_serem_instalados+=("pdftk-java")
+    pacotes_a_serem_instalados+=("wol")
+    pacotes_a_serem_instalados+=("brasero")
+    pacotes_a_serem_instalados+=("nmap")
+    pacotes_a_serem_instalados+=("rclone")
+    pacotes_a_serem_instalados+=("wireshark")
 
     # Instalando leitores de epub
-    dnf install --assumeyes calibre
-    dnf install --assumeyes okular
+    pacotes_a_serem_instalados+=("calibre")
+    pacotes_a_serem_instalados+=("okular")
 
     # Instalando pacotes para reportar erro automaticamente
-    dnf install --assumeyes abrt-desktop
-    dnf install --assumeyes abrt-java-connector
+    pacotes_a_serem_instalados+=("abrt-desktop")
+    pacotes_a_serem_instalados+=("abrt-java-connector")
 
     # Instalando ferramentas de segurança
-    dnf install --assumeyes chkrootkit
-    dnf install --assumeyes lynis
+    pacotes_a_serem_instalados+=("chkrootkit")
+    pacotes_a_serem_instalados+=("lynis")
 
     # Instalando xorg
-    dnf install --assumeyes xorg-x11-server-Xorg
-    dnf install --assumeyes xorg-x11-xauth
+    pacotes_a_serem_instalados+=("xorg-x11-server-Xorg")
+    pacotes_a_serem_instalados+=("xorg-x11-xauth")
 
     # Instalando o Draw.io
-    dnf install --assumeyes https://github.com/jgraph/drawio-desktop/releases/download/v24.1.0/drawio-x86_64-24.1.0.rpm
+    pacotes_a_serem_instalados+=("https://github.com/jgraph/drawio-desktop/releases/download/v26.2.15/drawio-x86_64-26.2.15.rpm")
 
     # Desinstalando pacotes inúteis
     ## Extensões Gnome Shell
-    dnf autoremove --assumeyes gnome-shell-extension-background-logo
-    dnf autoremove --assumeyes gnome-shell-extension-window-list
+    pacotes_a_serem_removidos+=("gnome-shell-extension-background-logo")
+    pacotes_a_serem_removidos+=("gnome-shell-extension-window-list")
+
+    # Realizando instalações
+    install_rpm_packages pacotes_a_serem_instalados
+
+    # Realizando desinstalações
+    uninstall_rpm_packages pacotes_a_serem_removidos
   }
 
   # Instala pacotes snap
@@ -190,6 +200,12 @@ function run_as_root() {
 
     # Instalando o FlatHub
     bash ./Install-Flathub.bash
+
+    # Instalando o BitWarden
+    flatpak install --assumeyes https://dl.flathub.org/repo/appstream/com.bitwarden.desktop.flatpakref
+
+    # Instalando o Calibre
+    flatpak install --assumeyes https://dl.flathub.org/repo/appstream/com.calibre_ebook.calibre.flatpakref
 
     # Instalando o Audacity
     flatpak install --assumeyes https://dl.flathub.org/repo/appstream/org.audacityteam.Audacity.flatpakref

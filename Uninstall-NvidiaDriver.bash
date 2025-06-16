@@ -7,6 +7,9 @@ source OsInfo.bash
 # Running as root
 run_as_root
 
+# Removing kernel module
+rm "/etc/modules-load.d/nvidia.conf"
+
 # Removing Nvidia Cuda ToolKit
 dnf autoremove --assumeyes cuda-toolkit
 
