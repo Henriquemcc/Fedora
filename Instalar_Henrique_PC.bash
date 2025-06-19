@@ -94,6 +94,7 @@ function run_as_root() {
     pacotes_a_serem_instalados+=("libstdc++-devel")
     pacotes_a_serem_instalados+=("perf")
     pacotes_a_serem_instalados+=("python3-pip")
+    pacotes_a_serem_instalados+=("python3-devel")
 
     # Instalando outros programas
     pacotes_a_serem_instalados+=("stacer")
