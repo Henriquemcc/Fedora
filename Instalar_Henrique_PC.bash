@@ -228,6 +228,9 @@ function run_as_root() {
     
     # Instalando Gnome Clock
     flatpak install --assumeyes https://dl.flathub.org/repo/appstream/org.gnome.clocks.flatpakref
+
+    # Instalando o Packet (Quick-Share)
+    flatpak install --assumeyes https://dl.flathub.org/repo/appstream/io.github.nozwock.Packet.flatpakref
   }
 
   # Adicionando suporte ao NTFS e ao Ex-Fat (de preferência por módulo do Kernel)
