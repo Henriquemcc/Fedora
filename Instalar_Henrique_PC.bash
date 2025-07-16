@@ -94,6 +94,7 @@ function run_as_root() {
     pacotes_a_serem_instalados+=("libstdc++-devel")
     pacotes_a_serem_instalados+=("perf")
     pacotes_a_serem_instalados+=("python3-pip")
+    pacotes_a_serem_instalados+=("python3-devel")
 
     # Instalando outros programas
     pacotes_a_serem_instalados+=("stacer")
@@ -227,6 +228,9 @@ function run_as_root() {
     
     # Instalando Gnome Clock
     flatpak install --assumeyes https://dl.flathub.org/repo/appstream/org.gnome.clocks.flatpakref
+
+    # Instalando o Packet (Quick-Share)
+    flatpak install --assumeyes https://dl.flathub.org/repo/appstream/io.github.nozwock.Packet.flatpakref
   }
 
   # Adicionando suporte ao NTFS e ao Ex-Fat (de preferência por módulo do Kernel)
