@@ -1,7 +1,17 @@
 #!/bin/bash
 
+# Importing function run_as_root
+source RunAsRoot.bash
+
+# Running as root
+run_as_root
+
 # Removing VirtualBox package
-sudo dnf autoremove --assumeyes virtualbox VirtualBox-7.0
+if [ "$(command -v dnf4)" ]; then
+  dnf4 autoremove --assumeyes virtualbox VirtualBox-7.0
+else
+  dnf autoremove --assumeyes virtualbox VirtualBox-7.0
+fi
 
 # Removing VirtualBox repository
-sudo rm /etc/yum.repos.d/virtualbox.repo
+rm /etc/yum.repos.d/virtualbox.repo
