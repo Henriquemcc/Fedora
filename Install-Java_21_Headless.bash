@@ -12,7 +12,7 @@ source RunAsRoot.bash
 run_as_root
 
 # Installing Java 21 JRE
-dnf install --assumeyes java-latest-openjdk-headless
+dnf install --assumeyes java-21-openjdk-headless
 
 # Creating command java21
 ln --symbolic "/usr/lib/jvm/java-21/bin/java" "/bin/java21"
