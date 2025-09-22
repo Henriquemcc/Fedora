@@ -55,6 +55,7 @@ function run_as_root() {
     pacotes_a_serem_instalados+=("libreoffice-draw")
     pacotes_a_serem_instalados+=("libreoffice-langpack-pt-BR")
     pacotes_a_serem_instalados+=("libreoffice-langpack-en")
+    pacotes_a_serem_instalados+=("libreoffice-langpack-fr")
     pacotes_a_serem_instalados+=("unoconv")
 
     # Instalando o Gnome Epiphany
