@@ -10,7 +10,7 @@ run_as_root
 bash ./Install-Java_21_Headless.bash
 
 # Installing Java 21 JRE and JDK
-dnf install --assumeyes java-latest-openjdk
+dnf install --assumeyes java-21-openjdk
 
 # Creating shortcuts
 {

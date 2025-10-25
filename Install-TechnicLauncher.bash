@@ -1,13 +1,13 @@
 #!/bin/bash
 
-url_technic_launcher_file="https://launcher.technicpack.net/launcher4/709/TechnicLauncher.jar"
+url_technic_launcher_file="https://launcher.technicpack.net/launcher4/1004/TechnicLauncher.jar"
 url_technic_launcher_picture="https://i.imgur.com/MDyTikO.png"
 path_installation_directory="${HOME}/.bin"
 path_applications_folder="${HOME}/.local/share/applications"
 path_icons_directory="${HOME}/.local/share/icons/hicolor/303x303/apps"
 
 # Installing requirements
-bash ./Install-Java_8_Gui.bash
+bash ./Install-Java_21_Gui.bash
 bash ./Install-Curl.bash
 bash ./Install-Xrandr.bash
 
@@ -30,7 +30,7 @@ path_technic_launcher_shortcut="${path_applications_folder}/TechnicLauncher.desk
     echo "Version=1.5"
     echo "Name=TechnicLauncher"
     echo "Type=Application"
-    echo "Exec=java8 -jar $path_technic_launcher_jar"
+    echo "Exec=java21 -jar $path_technic_launcher_jar"
     echo "Icon=$path_technic_launcher_icon"
     echo "StartupNotify=true"
     echo "Categories=Game;"

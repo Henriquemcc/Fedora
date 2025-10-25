@@ -23,4 +23,4 @@ fi
 mv ./virtualbox.repo /etc/yum.repos.d/virtualbox.repo
 
 # Installing VirtualBox
-dnf install --assumeyes VirtualBox-7.0
+dnf install --assumeyes VirtualBox-7.2

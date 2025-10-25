@@ -40,10 +40,13 @@ function run_as_root() {
   bash ./Enable-RpmFusion.bash
 
   # Configurando o NTP
-  bash ./ConfigurarNtp.bash
+  bash ./ConfigurarNtpRaspiberry.bash
 
   # Configurando DNF Automatic
   bash ./ConfigurarAtualizacoesAutomaticasDnfAutomaticRaspiberryPi.bash
+
+  # Configurando o Docker
+  bash ./ConfigurarDockerRaspiberry.bash
 
   # Instalando pacotes dnf
   instalar_pacotes_dnf
