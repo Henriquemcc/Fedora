@@ -25,6 +25,9 @@ function run_as_root() {
     # Obtendo funções install_rpm_packages e uninstall_rpm_packages
     source ./RpmPackageManager.bash
 
+    # Configurando Systemd-Resolved
+    bash ./ConfigurarSystemdResolved.bash
+
     # Configurando gerenciador de pacotes DNF
     bash ./ConfigurarDnfPackageManagerHenrique-PC.bash
 

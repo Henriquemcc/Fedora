@@ -24,6 +24,9 @@ function run_as_root() {
   # Carregando dados do arquivo .env
   source .env
 
+  # Configurando Systemd-Resolved
+  bash ./ConfigurarSystemdResolved.bash
+
   # Configurando o sshd_config
   bash ./ConfigurarSshdConfig.bash
 
