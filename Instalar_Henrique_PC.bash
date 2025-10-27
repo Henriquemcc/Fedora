@@ -272,6 +272,9 @@ function run_as_root() {
   # Instalando o Secure Delete
   bash ./Install-Srm.bash
 
+  # Instalando o Balena Etcher
+  bash ./Install-BalenaEtcher.bash
+
   # Instalando o Unity Hub
   bash ./Install-UnityHub.bash
 
