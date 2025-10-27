@@ -25,9 +25,6 @@ function run_as_root() {
     # Obtendo funções install_rpm_packages e uninstall_rpm_packages
     source ./RpmPackageManager.bash
 
-    # Configurando Systemd-Resolved
-    bash ./ConfigurarSystemdResolved.bash
-
     # Configurando gerenciador de pacotes DNF
     bash ./ConfigurarDnfPackageManagerHenrique-PC.bash
 
@@ -240,6 +237,9 @@ function run_as_root() {
   # Adicionando suporte ao NTFS e ao Ex-Fat (de preferência por módulo do Kernel)
   bash ./Enable-Ntfs.bash
   bash ./Enable-ExFat.bash
+
+  # Configurando Systemd-Resolved
+  bash ./ConfigurarSystemdResolved.bash
 
   # Configurando Firewalld
   bash ./ConfigurarFirewalld.bash
