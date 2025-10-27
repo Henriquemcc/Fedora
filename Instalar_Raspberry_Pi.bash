@@ -48,7 +48,8 @@ function run_as_root() {
   # Configurando DNF Automatic
   bash ./ConfigurarAtualizacoesAutomaticasDnfAutomaticRaspiberryPi.bash
 
-  # Configurando o Docker
+  # Instalando e Configurando o Docker
+  bash ./Install-DockerEngine.bash
   bash ./ConfigurarDockerRaspiberry.bash
 
   # Instalando pacotes dnf
