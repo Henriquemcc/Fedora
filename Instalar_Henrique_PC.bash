@@ -122,6 +122,7 @@ function run_as_root() {
     pacotes_a_serem_instalados+=("nmap")
     pacotes_a_serem_instalados+=("rclone")
     pacotes_a_serem_instalados+=("wireshark")
+    pacotes_a_serem_instalados+=("sudo-rs")
 
     # Instalando leitores de epub
     pacotes_a_serem_instalados+=("calibre")
@@ -341,5 +342,9 @@ bash ./Install-Ffmpeg.bash
 if [ "$(whoami)" == "root" ]; then
    bash -c "$(declare -f run_as_root); run_as_root"
 else
-  sudo bash -c "$(declare -f run_as_root); run_as_root"
+  if [ "$(command -v sudo-rs)" ]; then
+    sudo-rs bash -c "$(declare -f run_as_root); run_as_root"
+  else
+    sudo bash -c "$(declare -f run_as_root); run_as_root"
+  fi
 fi
