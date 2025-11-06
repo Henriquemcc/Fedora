@@ -58,9 +58,6 @@ function run_as_root() {
     pacotes_a_serem_instalados+=("libreoffice-langpack-fr")
     pacotes_a_serem_instalados+=("unoconv")
 
-    # Instalando o Gnome Epiphany
-    pacotes_a_serem_instalados+=("epiphany")
-
     # Instalando o File Roller
     pacotes_a_serem_instalados+=("file-roller")
     pacotes_a_serem_instalados+=("file-roller-nautilus")
@@ -119,7 +116,6 @@ function run_as_root() {
     pacotes_a_serem_instalados+=("pdftk-java")
     pacotes_a_serem_instalados+=("wol")
     pacotes_a_serem_instalados+=("brasero")
-    pacotes_a_serem_instalados+=("nmap")
     pacotes_a_serem_instalados+=("rclone")
     pacotes_a_serem_instalados+=("wireshark")
     pacotes_a_serem_instalados+=("sudo-rs")
@@ -127,10 +123,6 @@ function run_as_root() {
     # Instalando leitores de epub
     pacotes_a_serem_instalados+=("calibre")
     pacotes_a_serem_instalados+=("okular")
-
-    # Instalando pacotes para reportar erro automaticamente
-    pacotes_a_serem_instalados+=("abrt-desktop")
-    pacotes_a_serem_instalados+=("abrt-java-connector")
 
     # Instalando ferramentas de segurança
     pacotes_a_serem_instalados+=("chkrootkit")
