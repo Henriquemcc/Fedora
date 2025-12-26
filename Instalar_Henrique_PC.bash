@@ -246,10 +246,6 @@ function run_as_root() {
   # Desabilitando o sshd
   bash ./Disable-Sshd.bash
 
-  # Alterando o nome do computador
-  hostnamectl set-hostname --static henrique-pc
-  hostnamectl set-hostname --pretty HENRIQUE-PC
-
   # Configurando o Grub
   bash ./ConfigurarGrub.bash
 
