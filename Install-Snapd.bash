@@ -4,6 +4,11 @@
 source RunAsRoot.bash
 source RpmPackageManager.bash
 
+# Exiting if snap is already installed
+if [ "$(command -v snap)" ]; then
+  exit 0
+fi
+
 # Running as root
 run_as_root
 
