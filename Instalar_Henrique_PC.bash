@@ -91,8 +91,6 @@ function run_as_root() {
     dnf install --assumeyes qt5-qtsvg
     dnf install --assumeyes youtube-dl
     dnf install --assumeyes yt-dlp
-    dnf install --assumeyes snapd
-    dnf install --assumeyes flatpak
     dnf install --assumeyes ffmpeg
     dnf install --assumeyes fdupes
     dnf install --assumeyes ImageMagick
