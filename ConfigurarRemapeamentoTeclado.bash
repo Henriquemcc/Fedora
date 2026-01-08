@@ -1,13 +1,14 @@
 #!/bin/bash
 
-# Importing function run_as_root
+# Importing function run_as_root and install_rpm_package
 source RunAsRoot.bash
+source RpmPackageManager.bash
 
 # Running as root
 run_as_root
 
 # Instalando requisitos
-dnf install --assumeyes cargo
+install_rpm_package "cargo"
 
 # Instalando programa que remapeia teclado
 cargo install xremap --features gnome
