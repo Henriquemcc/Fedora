@@ -65,6 +65,9 @@ function run_as_root() {
     install_rpm_package chkrootkit
     install_rpm_package lynis
 
+    # Instalando outros programas
+    install_rpm_packages mokutil
+
     # Instalando as Ferramentas de desenvolvimento
     dnf install --assumeyes golang
     dnf install --assumeyes gcc
@@ -90,7 +93,6 @@ function run_as_root() {
     dnf install --assumeyes snapd
     dnf install --assumeyes flatpak
     dnf install --assumeyes ffmpeg
-    dnf install --assumeyes mokutil
     dnf install --assumeyes fdupes
     dnf install --assumeyes ImageMagick
     dnf install --assumeyes pdftk-java
@@ -101,9 +103,6 @@ function run_as_root() {
 
     # Instalando o Draw.io
     dnf install --assumeyes "https://github.com/jgraph/drawio-desktop/releases/download/v26.2.15/drawio-x86_64-26.2.15.rpm"
-
-    # Realizando instalações
-    install_rpm_packages pacotes_a_serem_instalados
   }
 
   # Instala pacotes snap
