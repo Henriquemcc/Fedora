@@ -6,12 +6,15 @@ if ! [ "$(command -v gnome-shell)" ]; then
 fi
 
 # Instalando extensões e apps
-sudo dnf install --assumeyes gnome-extensions-app
-sudo dnf install --assumeyes chrome-gnome-shell
-sudo dnf install --assumeyes gnome-tweaks
-sudo dnf install --assumeyes gnome-shell-extension-dash-to-dock
-sudo dnf install --assumeyes gnome-shell-extension-top-icons
-sudo dnf install --assumeyes gnome-shell-extension-caffeine
+source ./RpmPackageManager.bash
+pacotes_a_serem_instalados=()
+pacotes_a_serem_instalados+=("gnome-extensions-app")
+pacotes_a_serem_instalados+=("chrome-gnome-shell")
+pacotes_a_serem_instalados+=("gnome-tweaks")
+pacotes_a_serem_instalados+=("gnome-shell-extension-dash-to-dock")
+pacotes_a_serem_instalados+=("gnome-shell-extension-top-icons")
+pacotes_a_serem_instalados+=("gnome-shell-extension-caffeine")
+install_rpm_packages pacotes_a_serem_instalados
 
 # Desabilitando hot corners
 gsettings set org.gnome.desktop.interface enable-hot-corners false
