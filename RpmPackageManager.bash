@@ -4,26 +4,40 @@ function install_rpm_packages() {
   local array_name="$1[@]"
   local rpm_package_to_be_installed=("${!array_name}")
   for package in "${rpm_package_to_be_installed[@]}" ; do
-    if [ "$(command -v dnf)" ]; then
-      dnf install --assumeyes "$package"
-    elif [ "$(command -v yum)" ]; then
-      yum install --assumeyes "$package"
-    elif [ "$(command -v rpm-ostree)" ]; then
-      rpm-ostree install --assumeyes "$package"
-    fi
+    install_rpm_package "$package"
   done
+}
+
+function install_rpm_package() {
+  if [ "$(command -v dnf)" ]; then
+    dnf install --assumeyes "$@"
+  elif [ "$(command -v yum)" ]; then
+    yum install --assumeyes "$@"
+  elif [ "$(command -v rpm-ostree)" ]; then
+    rpm-ostree install --assumeyes "$@"
+  else
+    echo "Error: No package manager (dnf, yum, rpm-ostree) founded." >&2
+    return 1
+  fi
 }
 
 function uninstall_rpm_packages() {
   local array_name="$1[@]"
   local rpm_package_to_be_uninstalled=("${!array_name}")
   for package in "${rpm_package_to_be_uninstalled[@]}" ; do
-    if [ "$(command -v dnf)" ]; then
-      dnf remove --assumeyes "$package"
-    elif [ "$(command -v yum)" ]; then
-      yum remove --assumeyes "$package"
-    elif [ "$(command -v rpm-ostree)" ]; then
-      rpm-ostree remove --assumeyes "$package"
-    fi
+    uninstall_rpm_package "$package"
   done
+}
+
+function uninstall_rpm_package() {
+  if [ "$(command -v dnf)" ]; then
+    dnf remove --assumeyes "$@"
+  elif [ "$(command -v yum)" ]; then
+    yum remove --assumeyes "$@"
+  elif [ "$(command -v rpm-ostree)" ]; then
+    rpm-ostree remove --assumeyes "$@"
+  else
+    echo "Error: No package manager (dnf, yum, rpm-ostree) founded." >&2
+    return 1
+  fi
 }
