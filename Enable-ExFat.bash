@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# Importing function run_as_root
+# Importing function run_as_root and install_rpm_package
 source RunAsRoot.bash
+source RpmPackageManager.bash
 
 # Running as root
 run_as_root
@@ -46,5 +47,5 @@ if [ "$(is_kernel_compatible_with_exfat_module)" == 1 ]; then
 
 # Installing fuse-exfat
 else
-  dnf install --assumeyes fuse-exfat
+  install_rpm_package fuse-exfat
 fi
