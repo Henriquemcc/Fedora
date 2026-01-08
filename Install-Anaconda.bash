@@ -4,6 +4,9 @@
 source RunAsRoot.bash
 source RpmPackageManager.bash
 
+# Running as root
+run_as_root
+
 if ! [ "$(command -v anaconda)" ]; then
   install_rpm_package anaconda
 fi
