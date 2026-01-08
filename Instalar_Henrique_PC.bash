@@ -84,6 +84,7 @@ function run_as_root() {
     dnf install --assumeyes python3-devel
 
     # Instalando outros programas
+    dnf install --assumeyes vlc
     dnf install --assumeyes stacer
     dnf install --assumeyes qt5-qtcharts
     dnf install --assumeyes libdvdcss # Não disponível no CentOS ou RHEL
@@ -159,9 +160,6 @@ function run_as_root() {
 
     # Instalando o KeepassXC
     flatpak install --assumeyes https://dl.flathub.org/repo/appstream/org.keepassxc.KeePassXC.flatpakref
-
-    # Instalando o VLC Media Player
-    flatpak install --assumeyes https://dl.flathub.org/repo/appstream/org.videolan.VLC.flatpakref
 
     # Instalando o OnlyOffice
     flatpak install --assumeyes https://dl.flathub.org/repo/appstream/org.onlyoffice.desktopeditors.flatpakref
