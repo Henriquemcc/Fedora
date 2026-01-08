@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# Importing function run_as_root
+# Importing functions run_as_root and install_rpm_package
 source RunAsRoot.bash
+source RpmPackageManager.bash
 
 # Running as root
 run_as_root
@@ -15,8 +16,8 @@ fi
 bash ./Enable-RpmFusion.bash
 
 # Installing nvidia driver and nvidia cuda
-dnf install --assumeyes --allowerasing akmod-nvidia
-dnf install --assumeyes --allowerasing xorg-x11-drv-nvidia-cuda
+install_rpm_package --allowerasing akmod-nvidia
+install_rpm_package --allowerasing xorg-x11-drv-nvidia-cuda
 
 # Enabling kernel module
 echo "nvidia" > "/etc/modules-load.d/nvidia.conf"

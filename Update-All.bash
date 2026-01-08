@@ -19,6 +19,7 @@ function run_as_root() {
 dnf upgrade --refresh --assumeyes
 snap refresh
 flatpak update --assumeyes
+rpm-ostree upgrade
 
 # Running again as root
 run_as_root

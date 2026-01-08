@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# Importing function run_as_root and get_os_type
+# Importing functions run_as_root, get_os_type and install_rpm_package
 source RunAsRoot.bash
 source OsInfo.bash
+source RpmPackageManager.bash
 
 # Exiting if the operating system is not Red Hat or CentoOS
 if [ "$(get_os_type)" != "rhel" ] && [ "$(get_os_type)" != "centos" ] && [ "$(get_os_type)" != "almalinux" ]&& [ "$(get_os_type)" != "ol" ]; then
@@ -14,4 +15,4 @@ fi
 run_as_root
 
 # Installing Fedora Epel
-dnf install --assumeyes --nogpgcheck "https://dl.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E %rhel).noarch.rpm"
+install_rpm_package --nogpgcheck "https://dl.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E %rhel).noarch.rpm"
