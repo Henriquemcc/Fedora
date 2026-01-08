@@ -9,13 +9,15 @@ function install_rpm_packages() {
 }
 
 function install_rpm_package() {
-  local package="$1"
   if [ "$(command -v dnf)" ]; then
-    dnf install --assumeyes "$package"
+    dnf install --assumeyes "$@"
   elif [ "$(command -v yum)" ]; then
-    yum install --assumeyes "$package"
+    yum install --assumeyes "$@"
   elif [ "$(command -v rpm-ostree)" ]; then
-    rpm-ostree install --assumeyes "$package"
+    rpm-ostree install --assumeyes "$@"
+  else
+    echo "Error: No package manager (dnf, yum, rpm-ostree) founded." >&2
+    return 1
   fi
 }
 
@@ -28,12 +30,14 @@ function uninstall_rpm_packages() {
 }
 
 function uninstall_rpm_package() {
-  local package="$1"
   if [ "$(command -v dnf)" ]; then
-    dnf remove --assumeyes "$package"
+    dnf remove --assumeyes "$@"
   elif [ "$(command -v yum)" ]; then
-    yum remove --assumeyes "$package"
+    yum remove --assumeyes "$@"
   elif [ "$(command -v rpm-ostree)" ]; then
-    rpm-ostree remove --assumeyes "$package"
+    rpm-ostree remove --assumeyes "$@"
+  else
+    echo "Error: No package manager (dnf, yum, rpm-ostree) founded." >&2
+    return 1
   fi
 }
