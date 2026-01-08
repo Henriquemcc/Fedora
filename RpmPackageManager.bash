@@ -23,12 +23,17 @@ function uninstall_rpm_packages() {
   local array_name="$1[@]"
   local rpm_package_to_be_uninstalled=("${!array_name}")
   for package in "${rpm_package_to_be_uninstalled[@]}" ; do
-    if [ "$(command -v dnf)" ]; then
-      dnf remove --assumeyes "$package"
-    elif [ "$(command -v yum)" ]; then
-      yum remove --assumeyes "$package"
-    elif [ "$(command -v rpm-ostree)" ]; then
-      rpm-ostree remove --assumeyes "$package"
-    fi
+    uninstall_rpm_package "$package"
   done
+}
+
+function uninstall_rpm_package() {
+  local package="$1"
+  if [ "$(command -v dnf)" ]; then
+    dnf remove --assumeyes "$package"
+  elif [ "$(command -v yum)" ]; then
+    yum remove --assumeyes "$package"
+  elif [ "$(command -v rpm-ostree)" ]; then
+    rpm-ostree remove --assumeyes "$package"
+  fi
 }
