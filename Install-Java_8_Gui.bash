@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# Importing function run_as_root
+# Importing function run_as_root and install_rpm_package
 source RunAsRoot.bash
+source RpmPackageManager.bash
 
 # Running as root
 run_as_root
@@ -10,7 +11,7 @@ run_as_root
 bash ./Install-Java_8_Headless.bash
 
 # Installing Java 8 JRE and JDK
-dnf install --assumeyes java-1.8.0-openjdk
+install_rpm_package java-1.8.0-openjdk
 
 # Creating shortcuts
 {
