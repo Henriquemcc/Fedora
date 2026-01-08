@@ -167,10 +167,6 @@ function run_as_root() {
     done
 
     while true; do
-      snap install clion --classic && break
-    done
-
-    while true; do
       snap install flutter --classic && break
     done
 
@@ -180,10 +176,6 @@ function run_as_root() {
     
     while true; do
       snap install postman && break
-    done
-    
-    while true; do
-      snap install webstorm --classic && break
     done
 
   }
