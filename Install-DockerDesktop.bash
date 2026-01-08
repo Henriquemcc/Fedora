@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# Importing function run_as_root
+# Importing function run_as_root and install_rpm_package
 source RunAsRoot.bash
+source RpmPackageManager.bash
 
 # Running as root
 run_as_root
@@ -10,4 +11,4 @@ run_as_root
 bash ./Install-DockerEngine.bash
 
 # Installing Docker desktop
-dnf install --assumeyes https://desktop.docker.com/linux/main/amd64/docker-desktop-x86_64.rpm
+install_rpm_package https://desktop.docker.com/linux/main/amd64/docker-desktop-x86_64.rpm
