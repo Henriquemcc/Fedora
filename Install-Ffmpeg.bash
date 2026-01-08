@@ -1,14 +1,15 @@
 #!/bin/bash
 
-# Importing function run_as_root and get_os_type
+# Importing function run_as_root, get_os_type and install_rpm_package
 source RunAsRoot.bash
 source OsInfo.bash
+source RpmPackageManager.bash
 
 # Running as root
 run_as_root
 
 # Installing requirements
-dnf install --assumeyes 'dnf-command(config-manager)'
+install_rpm_package 'dnf-command(config-manager)'
 
 # Getting the name of the Code Ready Builder repository
 repository_name=""
@@ -30,4 +31,4 @@ fi
 dnf config-manager --set-enabled "$repository_name"
 
 # Installing ffmpeg
-dnf install --allowerasing --assumeyes ffmpeg
+install_rpm_package --allowerasing ffmpeg
