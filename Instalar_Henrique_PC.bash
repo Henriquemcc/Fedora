@@ -55,7 +55,7 @@ function run_as_root() {
     install_rpm_package lynis
 
     # Instalando outros programas
-    install_rpm_packages mokutil
+    install_rpm_package mokutil
 
     # Instalando o File Roller
     dnf install --assumeyes file-roller
