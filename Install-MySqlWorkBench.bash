@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# Importing function run_as_root
+# Importing function run_as_root and install_rpm_package
 source RunAsRoot.bash
+source RpmPackageManager.bash
 
 # Running as root
 run_as_root
@@ -24,10 +25,15 @@ elif [ "$VERSION_ID" == "34" ]; then
 fi
 
 # Installing MySQL Repository
-dnf install --assumeyes "$URL_RPM_MySQL_Repository"
+install_rpm_package "$URL_RPM_MySQL_Repository"
+
+# Applying update on Fedora Silverblue
+if [ "$(command -v rpm-ostree)" ]; then
+  rpm-ostree apply-live
+fi
 
 # Installing MySQL WorkBench
-dnf install --assumeyes "$URL_RPM_MySQL_WorkBench"
+install_rpm_package "$URL_RPM_MySQL_WorkBench"
 
 
 
