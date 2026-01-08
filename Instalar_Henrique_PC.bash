@@ -40,85 +40,77 @@ function run_as_root() {
     # Trocando o pacote ffmpeg-free por ffmpeg
     dnf swap --assumeyes --allowerasing ffmpeg-free ffmpeg
 
-    # Array de pacotes RPM
-    pacotes_a_serem_instalados=()
-
     # Instalando o File Roller
-    pacotes_a_serem_instalados+=("file-roller")
-    pacotes_a_serem_instalados+=("file-roller-nautilus")
+    dnf install --assumeyes file-roller
+    dnf install --assumeyes file-roller-nautilus
 
     # Instalando a Impressora HP
-    pacotes_a_serem_instalados+=("hplip")
+    install_rpm_package hplip
 
     # Instalando o Suporte a arquivos 7zip
-    pacotes_a_serem_instalados+=("p7zip-plugins")
-    pacotes_a_serem_instalados+=("p7zip")
+    dnf install --assumeyes p7zip-plugins
+    dnf install --assumeyes p7zip
 
     # Instalando o KVM
-    pacotes_a_serem_instalados+=("qemu-kvm")
-    pacotes_a_serem_instalados+=("libvirt")
+    install_rpm_package qemu-kvm
+    install_rpm_package libvirt
 
     # Instalando os Sistemas de arquivos não nativos do linux
-    # pacotes_a_serem_instalados+=("ntfs-3g") # Usando Enable-Ntfs no lugar
-    # pacotes_a_serem_instalados+=("exfat-utils")
-    pacotes_a_serem_instalados+=("fuse")
-    # pacotes_a_serem_instalados+=("fuse-exfat") # Usando Enable-ExFat no lugar
-
-    # Instalando as Ferramentas de desenvolvimento
-    pacotes_a_serem_instalados+=("golang")
-    pacotes_a_serem_instalados+=("gcc")
-    pacotes_a_serem_instalados+=("gcc-c++")
-    pacotes_a_serem_instalados+=("dotnet-sdk-5.0")
-    pacotes_a_serem_instalados+=("aspnetcore-runtime-5.0")
-    pacotes_a_serem_instalados+=("dotnet-runtime-5.0")
-    pacotes_a_serem_instalados+=("git")
-    pacotes_a_serem_instalados+=("git-lfs")
-    pacotes_a_serem_instalados+=("android-tools")
-    pacotes_a_serem_instalados+=("libstdc++-devel")
-    pacotes_a_serem_instalados+=("perf")
-    pacotes_a_serem_instalados+=("python3-pip")
-    pacotes_a_serem_instalados+=("python3-devel")
+    install_rpm_package fuse
 
     # Instalando outros programas
-    pacotes_a_serem_instalados+=("stacer")
-    pacotes_a_serem_instalados+=("qt5-qtcharts")
-    pacotes_a_serem_instalados+=("vlc")
-    pacotes_a_serem_instalados+=("libdvdcss") # Não disponível no CentOS ou RHEL
-    pacotes_a_serem_instalados+=("qt5-qtsvg")
-    pacotes_a_serem_instalados+=("youtube-dl")
-    pacotes_a_serem_instalados+=("yt-dlp")
-    pacotes_a_serem_instalados+=("snapd")
-    pacotes_a_serem_instalados+=("flatpak")
-    pacotes_a_serem_instalados+=("qbittorrent")
-    pacotes_a_serem_instalados+=("ffmpeg")
-    pacotes_a_serem_instalados+=("steam")
-    pacotes_a_serem_instalados+=("mokutil")
-    pacotes_a_serem_instalados+=("fdupes")
-    pacotes_a_serem_instalados+=("dconf-editor")
-    pacotes_a_serem_instalados+=("gimp")
-    pacotes_a_serem_instalados+=("gedit")
-    pacotes_a_serem_instalados+=("ImageMagick")
-    pacotes_a_serem_instalados+=("pdftk-java")
-    pacotes_a_serem_instalados+=("wol")
-    pacotes_a_serem_instalados+=("brasero")
-    pacotes_a_serem_instalados+=("rclone")
-    pacotes_a_serem_instalados+=("wireshark")
-    pacotes_a_serem_instalados+=("sudo-rs")
-
-    # Instalando leitores de epub
-    pacotes_a_serem_instalados+=("calibre")
-    pacotes_a_serem_instalados+=("okular")
+    install_rpm_package sudo-rs
 
     # Instalando ferramentas de segurança
-    pacotes_a_serem_instalados+=("chkrootkit")
-    pacotes_a_serem_instalados+=("lynis")
+    install_rpm_package chkrootkit
+    install_rpm_package lynis
 
-    # Instalando xorg
-    pacotes_a_serem_instalados+=("xorg-x11-server-Xorg")
-    pacotes_a_serem_instalados+=("xorg-x11-xauth")
+    # Instalando as Ferramentas de desenvolvimento
+    dnf install --assumeyes golang
+    dnf install --assumeyes gcc
+    dnf install --assumeyes gcc-c++
+    dnf install --assumeyes dotnet-sdk-5.0
+    dnf install --assumeyes aspnetcore-runtime-5.0
+    dnf install --assumeyes dotnet-runtime-5.0
+    dnf install --assumeyes git
+    dnf install --assumeyes git-lfs
+    dnf install --assumeyes android-tools
+    dnf install --assumeyes libstdc++-devel
+    dnf install --assumeyes perf
+    dnf install --assumeyes python3-pip
+    dnf install --assumeyes python3-devel
+
+    # Instalando outros programas
+    dnf install --assumeyes stacer
+    dnf install --assumeyes qt5-qtcharts
+    dnf install --assumeyes vlc
+    dnf install --assumeyes libdvdcss # Não disponível no CentOS ou RHEL
+    dnf install --assumeyes qt5-qtsvg
+    dnf install --assumeyes youtube-dl
+    dnf install --assumeyes yt-dlp
+    dnf install --assumeyes snapd
+    dnf install --assumeyes flatpak
+    dnf install --assumeyes qbittorrent
+    dnf install --assumeyes ffmpeg
+    dnf install --assumeyes steam
+    dnf install --assumeyes mokutil
+    dnf install --assumeyes fdupes
+    dnf install --assumeyes dconf-editor
+    dnf install --assumeyes gimp
+    dnf install --assumeyes gedit
+    dnf install --assumeyes ImageMagick
+    dnf install --assumeyes pdftk-java
+    dnf install --assumeyes wol
+    dnf install --assumeyes brasero
+    dnf install --assumeyes rclone
+    dnf install --assumeyes wireshark
+
+    # Instalando leitores de epub
+    dnf install --assumeyes calibre
+    dnf install --assumeyes okular
 
     # Instalando o Draw.io
-    pacotes_a_serem_instalados+=("https://github.com/jgraph/drawio-desktop/releases/download/v26.2.15/drawio-x86_64-26.2.15.rpm")
+    dnf install --assumeyes "https://github.com/jgraph/drawio-desktop/releases/download/v26.2.15/drawio-x86_64-26.2.15.rpm"
 
     # Realizando instalações
     install_rpm_packages pacotes_a_serem_instalados
