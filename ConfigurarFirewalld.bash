@@ -1,19 +1,14 @@
 #!/bin/bash
 
-# Importing function run_as_root
+# Importing functions run_as_root and install_rpm_package
 source RunAsRoot.bash
+source RpmPackageManager.bash
 
 # Running as root
 run_as_root
 
 # Installing firewalld
-if [ "$(command -v dnf)" ]; then
-  dnf install --assumeyes firewalld
-elif [ "$(command -v yum)" ]; then
-  yum install --assumeyes firewalld
-elif [ "$(command -v rpm-ostree)" ]; then
-  rpm-ostree install --assumeyes firewalld
-fi
+install_rpm_package firewalld
 
 # Closing all open ports by default
 firewall-cmd --permanent --remove-port=1025-65535/tcp
