@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# Importing function run_as_root, get_os_type and get_os_version
+# Importing functions run_as_root, get_os_type, get_os_version and install_rpm_package
 source RunAsRoot.bash
 source OsInfo.bash
+source RpmPackageManager.bash
 
 # Running as root
 run_as_root
@@ -21,20 +22,28 @@ fi
 if [ "$(get_os_type)" == "fedora" ]; then
   if [ "$(command -v dnf4)" ]; then
     dnf4 config-manager --add-repo "https://developer.download.nvidia.com/compute/cuda/repos/$(get_os_type)$(get_os_version)/x86_64/cuda-$(get_os_type)$(get_os_version).repo" || exit 1
-  else
+  elif [ "$(command -v dnf)" ]; then
     dnf config-manager --add-repo "https://developer.download.nvidia.com/compute/cuda/repos/$(get_os_type)$(get_os_version)/x86_64/cuda-$(get_os_type)$(get_os_version).repo" || exit 1
+  else
+    curl -o "/etc/yum.repos.d/cuda-$(get_os_type)$(get_os_version).repo" "https://developer.download.nvidia.com/compute/cuda/repos/$(get_os_type)$(get_os_version)/x86_64/cuda-$(get_os_type)$(get_os_version).repo"
   fi
 elif [ "$(get_os_type)" == "rhel" ] || [ "$(get_os_type)" == "centos" ] || [ "$(get_os_type)" == "almalinux" ] || [ "$(get_os_type)" == "ol" ]; then
   if [ "$(command -v dnf4)" ]; then
     dnf4 config-manager --add-repo "https://developer.download.nvidia.com/compute/cuda/repos/rhel$(get_os_version)/x86_64/cuda-rhel$(get_os_version).repo" || exit 1
-  else
+  elif [ "$(command -v dnf)" ]; then
     dnf config-manager --add-repo "https://developer.download.nvidia.com/compute/cuda/repos/rhel$(get_os_version)/x86_64/cuda-rhel$(get_os_version).repo" || exit 1
+  else
+    curl -o "/etc/yum.repos.d/cuda-rhel$(get_os_version).repo" "https://developer.download.nvidia.com/compute/cuda/repos/rhel$(get_os_version)/x86_64/cuda-rhel$(get_os_version).repo"
   fi
 fi
 
 # Installing Nvidia Cuda
-dnf module install --allowerasing --refresh --assumeyes nvidia-driver:open-dkms
-dnf --assumeyes --disablerepo="rpmfusion-nonfree*" install cuda
+if [ "$(command -v dnf)" ]; then
+  dnf module install --allowerasing --refresh --assumeyes nvidia-driver:open-dkms
+else
+  install_rpm_package --allowerasing --refresh nvidia-driver:open-dkms
+fi
+install_rpm_package --disablerepo="rpmfusion-nonfree*" cuda
 
 # Updating grub
 grub2-mkconfig -o /etc/grub2.cfg
