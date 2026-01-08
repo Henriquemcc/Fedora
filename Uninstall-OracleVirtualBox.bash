@@ -1,17 +1,14 @@
 #!/bin/bash
 
-# Importing function run_as_root
+# Importing functions run_as_root and uninstall_rpm_package
 source RunAsRoot.bash
+source RpmPackageManager.bash
 
 # Running as root
 run_as_root
 
 # Removing VirtualBox package
-if [ "$(command -v dnf4)" ]; then
-  dnf4 autoremove --assumeyes virtualbox VirtualBox-7.0
-else
-  dnf autoremove --assumeyes virtualbox VirtualBox-7.0
-fi
+uninstall_rpm_package virtualbox VirtualBox-7.0
 
 # Removing VirtualBox repository
 rm /etc/yum.repos.d/virtualbox.repo

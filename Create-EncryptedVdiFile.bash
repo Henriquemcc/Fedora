@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# Importing function run_as_root
+# Importing functions run_as_root and install_rpm_package
 source RunAsRoot.bash
+source RpmPackageManager.bash
 
 # Running as root
 run_as_root
@@ -11,9 +12,9 @@ vdi_file_path="$1"
 vdi_file_max_size="$2"
 
 # Installing requirements
-dnf install qemu-img --assumeyes
-dnf install cryptsetup --assumeyes
-dnf install udisks --assumeyes
+install_rpm_package qemu-img
+install_rpm_package cryptsetup
+install_rpm_package udisks
 
 # Getting the vdi file path if it is not provided as an argument
 if [ -z "$vdi_file_path" ]; then

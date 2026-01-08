@@ -5,12 +5,13 @@ function_return_variable=
 function obter_opcao() {
   _opcao_selecionada=-1
   re='^[0-9]+$'
-  while ! [[ $_opcao_selecionada =~ $re ]] || [ $_opcao_selecionada -lt 0 ] || [ $_opcao_selecionada -gt 3 ]; do
+  while ! [[ $_opcao_selecionada =~ $re ]] || [ $_opcao_selecionada -lt 0 ] || [ $_opcao_selecionada -gt 4 ]; do
     echo "O que deseja fazer?"
     echo "0 - Sair"
-    echo "1 - Instalar sistema Henrique-PC"
-    echo "2 - Instalar sistema HMCC-Server"
-    echo "3 - Instalar sistema Raspberry Pi"
+    echo "1 - Instalar sistema Henrique-Desktop"
+    echo "2 - Instalar sistema Henrique-Laptop"
+    echo "3 - Instalar sistema HMCC-Server"
+    echo "4 - Instalar sistema Raspberry Pi"
     read -r _opcao_selecionada
   done
 
@@ -25,10 +26,12 @@ while [ $opcao_selecionada -ne 0 ]; do
   opcao_selecionada="$function_return_variable"
 
   if [ "$opcao_selecionada" -eq 1 ]; then
-    bash ./Instalar_Henrique_PC.bash
+    bash ./Instalar_Henrique_Desktop.bash
   elif [ "$opcao_selecionada" -eq 2 ]; then
-    bash ./Instalar_HMCC_Server.bash
+    bash ./Instalar_Henrique_Laptop.bash
   elif [ "$opcao_selecionada" -eq 3 ]; then
+    bash ./Instalar_HMCC_Server.bash
+  elif [ "$opcao_selecionada" -eq 4 ]; then
     bash ./Instalar_Raspberry_Pi.bash
   fi
 done

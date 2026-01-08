@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# Importing function run_as_root, get_os_type and get_os_version
+# Importing functions run_as_root, get_os_type, get_os_version and uninstall_rpm_package
 source RunAsRoot.bash
 source OsInfo.bash
+source RpmPackageManager.bash
 
 # Running as root
 run_as_root
@@ -11,18 +12,20 @@ run_as_root
 rm "/etc/modules-load.d/nvidia.conf"
 
 # Removing Nvidia Cuda ToolKit
-dnf autoremove --assumeyes cuda-toolkit
+uninstall_rpm_package cuda-toolkit
 
 # Removing GPUDirect Filesystem
-dnf autoremove --assumeyes nvidia-gds
+uninstall_rpm_package nvidia-gds
 
 # Removing Nvidia driver
 dnf module reset --assumeyes nvidia-driver
-dnf autoremove --assumeyes nvidia-driver
+uninstall_rpm_package nvidia-driver
 
 # Removing repository
 if [ "$(command -v dnf4)" ]; then
   dnf4 config-manager --disable "cuda-rhel9-x86_64"
-else
+elif [ "$(command -v dnf)" ]; then
   dnf config-manager --disable "cuda-rhel9-x86_64"
+else
+  sed -i 's/enabled=1/enabled=0/g' /etc/yum.repos.d/cuda-rhel9-x86_64.repo
 fi

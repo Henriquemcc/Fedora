@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Importing functions run_as_root and install_rpm_package
+source RunAsRoot.bash
+source RpmPackageManager.bash
+
+# Running as root
+run_as_root
+
 # Uninstalling Oracle VirtualBox
 bash ./Uninstall-OracleVirtualBox.bash
 
@@ -8,13 +15,13 @@ bash ./Enable-RpmFusion.bash
 
 # Installing VirtualBox
 if ! [ "$(command -v virtualbox)" ]; then
-  sudo dnf install --assumeyes VirtualBox
-  sudo dnf install --assumeyes virtualbox-guest-additions
+  install_rpm_package VirtualBox
+  install_rpm_package virtualbox-guest-additions
 
   # Installing Secure Boot required packages
   if [ "$(mokutil --sb-state)" == "SecureBoot enabled" ]; then
-    sudo dnf install --assumeyes kmod-VirtualBox
-    sudo dnf install --assumeyes VirtualBox-kmodsrc
-    sudo dnf install --assumeyes akmod-VirtualBox
+    install_rpm_package kmod-VirtualBox
+    install_rpm_package VirtualBox-kmodsrc
+    install_rpm_package akmod-VirtualBox
   fi
 fi
