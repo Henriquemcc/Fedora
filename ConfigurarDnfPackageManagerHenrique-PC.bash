@@ -6,6 +6,11 @@ source RunAsRoot.bash
 # Running as root
 run_as_root
 
+# Verificando se o comando dnf existe
+if ! [ "$(command -v dnf)" ]; then
+    exit 1
+fi
+
 # Backing up configuration file
 cp "/etc/dnf/dnf.conf" "/etc/dnf/dnf.conf.backup.$(date "+%d-%m-%Y_%H:%M:%S")"
 
