@@ -42,21 +42,6 @@ function run_as_root() {
 
     # Array de pacotes RPM
     pacotes_a_serem_instalados=()
-    pacotes_a_serem_removidos=()
-
-    # Instalando o KeepassXC
-    pacotes_a_serem_instalados+=("keepassxc")
-
-    # Instalando o Libreoffice
-    pacotes_a_serem_instalados+=("libreoffice-writer")
-    pacotes_a_serem_instalados+=("libreoffice-calc")
-    pacotes_a_serem_instalados+=("libreoffice-impress")
-    pacotes_a_serem_instalados+=("libreoffice-math")
-    pacotes_a_serem_instalados+=("libreoffice-draw")
-    pacotes_a_serem_instalados+=("libreoffice-langpack-pt-BR")
-    pacotes_a_serem_instalados+=("libreoffice-langpack-en")
-    pacotes_a_serem_instalados+=("libreoffice-langpack-fr")
-    pacotes_a_serem_instalados+=("unoconv")
 
     # Instalando o File Roller
     pacotes_a_serem_instalados+=("file-roller")
@@ -135,16 +120,8 @@ function run_as_root() {
     # Instalando o Draw.io
     pacotes_a_serem_instalados+=("https://github.com/jgraph/drawio-desktop/releases/download/v26.2.15/drawio-x86_64-26.2.15.rpm")
 
-    # Desinstalando pacotes inúteis
-    ## Extensões Gnome Shell
-    pacotes_a_serem_removidos+=("gnome-shell-extension-background-logo")
-    pacotes_a_serem_removidos+=("gnome-shell-extension-window-list")
-
     # Realizando instalações
     install_rpm_packages pacotes_a_serem_instalados
-
-    # Realizando desinstalações
-    uninstall_rpm_packages pacotes_a_serem_removidos
   }
 
   # Instala pacotes snap
@@ -199,8 +176,14 @@ function run_as_root() {
     # Instalando o BitWarden
     flatpak install --assumeyes https://dl.flathub.org/repo/appstream/com.bitwarden.desktop.flatpakref
 
+    # Instalando o KeepassXC
+    flatpak install --assumeyes https://dl.flathub.org/repo/appstream/org.keepassxc.KeePassXC.flatpakref
+
     # Instalando o OnlyOffice
     flatpak install --assumeyes https://dl.flathub.org/repo/appstream/org.onlyoffice.desktopeditors.flatpakref
+
+    # Instalando o LibreOffice
+    flatpak install --assumeyes https://dl.flathub.org/repo/appstream/org.libreoffice.LibreOffice.flatpakref
 
     # Instalando o Calibre
     flatpak install --assumeyes https://dl.flathub.org/repo/appstream/com.calibre_ebook.calibre.flatpakref
