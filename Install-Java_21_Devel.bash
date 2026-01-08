@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# Importing function run_as_root
+# Importing function run_as_root and install_rpm_package
 source RunAsRoot.bash
+source RpmPackageManager.bash
 
 # Running as root
 run_as_root
@@ -15,7 +16,7 @@ if [ "$(command -v javac21)" ]; then
 fi
 
 # Installing Java 21 JDK
-dnf install --assumeyes java-21-openjdk-devel
+install_rpm_package java-21-openjdk-devel
 
 # Creating command javac20
 ln --symbolic "/usr/lib/jvm/java-21/bin/javac" "/bin/javac21"

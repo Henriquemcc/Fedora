@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# Importing function run_as_root
+# Importing function run_as_root and install_rpm_package
 source RunAsRoot.bash
+source RpmPackageManager.bash
 
 # Running as root
 run_as_root
@@ -10,7 +11,7 @@ run_as_root
 bash ./Install-Java_21_Headless.bash
 
 # Installing Java 21 JRE and JDK
-dnf install --assumeyes java-21-openjdk
+install_rpm_package java-21-openjdk
 
 # Creating shortcuts
 {

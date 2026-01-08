@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# Importing function run_as_root
+# Importing function run_as_root and install_rpm_package
 source RunAsRoot.bash
+source RpmPackageManager.bash
 
 # Running as root
 run_as_root
@@ -15,7 +16,7 @@ if [ "$(command -v javac11)" ]; then
 fi
 
 # Installing Java 11 JDK
-dnf install --assumeyes java-11-openjdk-devel
+install_rpm_package java-11-openjdk-devel
 
 # Creating command javac11
 ln --symbolic "/usr/lib/jvm/java-11/bin/javac" "/bin/javac11"
