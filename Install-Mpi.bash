@@ -1,14 +1,15 @@
 #!/bin/bash
 
-# Importing function run_as_root
+# Importing function run_as_root and install_rpm_package
 source RunAsRoot.bash
+source RpmPackageManager.bash
 
 # Running as root
 run_as_root
 
 # Installing MPI
-dnf install --assumeyes openmpi
-dnf install --assumeyes openmpi-devel
+install_rpm_package openmpi
+install_rpm_package openmpi-devel
 
 # Getting the executable path
 mpi_executable_path_32="/usr/lib/openmpi/bin/mpirun"
