@@ -83,31 +83,21 @@ function run_as_root() {
     # Instalando outros programas
     dnf install --assumeyes stacer
     dnf install --assumeyes qt5-qtcharts
-    dnf install --assumeyes vlc
     dnf install --assumeyes libdvdcss # Não disponível no CentOS ou RHEL
     dnf install --assumeyes qt5-qtsvg
     dnf install --assumeyes youtube-dl
     dnf install --assumeyes yt-dlp
     dnf install --assumeyes snapd
     dnf install --assumeyes flatpak
-    dnf install --assumeyes qbittorrent
     dnf install --assumeyes ffmpeg
-    dnf install --assumeyes steam
     dnf install --assumeyes mokutil
     dnf install --assumeyes fdupes
-    dnf install --assumeyes dconf-editor
-    dnf install --assumeyes gimp
-    dnf install --assumeyes gedit
     dnf install --assumeyes ImageMagick
     dnf install --assumeyes pdftk-java
     dnf install --assumeyes wol
     dnf install --assumeyes brasero
     dnf install --assumeyes rclone
     dnf install --assumeyes wireshark
-
-    # Instalando leitores de epub
-    dnf install --assumeyes calibre
-    dnf install --assumeyes okular
 
     # Instalando o Draw.io
     dnf install --assumeyes "https://github.com/jgraph/drawio-desktop/releases/download/v26.2.15/drawio-x86_64-26.2.15.rpm"
@@ -171,14 +161,26 @@ function run_as_root() {
     # Instalando o KeepassXC
     flatpak install --assumeyes https://dl.flathub.org/repo/appstream/org.keepassxc.KeePassXC.flatpakref
 
+    # Instalando o VLC Media Player
+    flatpak install --assumeyes https://dl.flathub.org/repo/appstream/org.videolan.VLC.flatpakref
+
     # Instalando o OnlyOffice
     flatpak install --assumeyes https://dl.flathub.org/repo/appstream/org.onlyoffice.desktopeditors.flatpakref
 
     # Instalando o LibreOffice
     flatpak install --assumeyes https://dl.flathub.org/repo/appstream/org.libreoffice.LibreOffice.flatpakref
 
+    # Instalando o Gimp
+    flatpak install --assumeyes https://dl.flathub.org/repo/appstream/org.gimp.GIMP.flatpakref
+
+    # Instalando o Gedit
+    flatpak install --assumeyes https://dl.flathub.org/repo/appstream/org.gnome.gedit.flatpakref
+
     # Instalando o Calibre
     flatpak install --assumeyes https://dl.flathub.org/repo/appstream/com.calibre_ebook.calibre.flatpakref
+
+    # Instalando o Okular
+    flatpak install --assumeyes https://dl.flathub.org/repo/appstream/org.kde.okular.flatpakref
 
     # Instalando o Audacity
     flatpak install --assumeyes https://dl.flathub.org/repo/appstream/org.audacityteam.Audacity.flatpakref
@@ -194,6 +196,9 @@ function run_as_root() {
 
     # Instalando o Discord
     flatpak install --assumeyes https://dl.flathub.org/repo/appstream/com.discordapp.Discord.flatpakref
+
+    # Instalando o Dconf Editor
+    flatpak install --assumeyes https://dl.flathub.org/repo/appstream/ca.desrt.dconf-editor.flatpakref
     
     # Instalando o Stremio
     flatpak install --assumeyes https://dl.flathub.org/repo/appstream/com.stremio.Stremio.flatpakref
@@ -203,6 +208,12 @@ function run_as_root() {
 
     # Instalando o Packet (Quick-Share)
     flatpak install --assumeyes https://dl.flathub.org/repo/appstream/io.github.nozwock.Packet.flatpakref
+
+    # Instalando o Steam
+    flatpak install --assumeyes https://dl.flathub.org/repo/appstream/com.valvesoftware.Steam.flatpakref
+
+    # Instalando o qbittorrent
+    flatpak install --assumeyes https://dl.flathub.org/repo/appstream/org.qbittorrent.qBittorrent.flatpakref
   }
 
   # Adicionando suporte ao NTFS e ao Ex-Fat (de preferência por módulo do Kernel)
