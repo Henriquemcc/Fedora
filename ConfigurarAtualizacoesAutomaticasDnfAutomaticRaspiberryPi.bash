@@ -6,6 +6,11 @@ source RunAsRoot.bash
 # Running as root
 run_as_root
 
+# Verificando se o comando dnf existe
+if ! [ "$(command -v dnf)" ]; then
+    exit 1
+fi
+
 # Installing Dnf Automatic
 dnf install --assumeyes dnf-automatic
 
