@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# Importing function run_as_root and get_os_type
+# Importing function run_as_root, get_os_type and install_rpm_package
 source RunAsRoot.bash
 source OsInfo.bash
+source RpmPackageManager.bash
 
 # Running as root
 run_as_root
@@ -15,17 +16,24 @@ if [ "$(get_os_type)" == "rhel" ] || [ "$(get_os_type)" == "centos" ] || [ "$(ge
   dnf install --assumeyes --nogpgcheck "https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-$(rpm -E %rhel).noarch.rpm"
   dnf install --assumeyes --nogpgcheck "https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-$(rpm -E %rhel).noarch.rpm"
 elif [ "$(get_os_type)" == "fedora" ]; then
-  dnf install --assumeyes "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm"
-  dnf install --assumeyes "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm"
+  install_rpm_package "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm"
+  install_rpm_package "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm"
 fi
-dnf install --assumeyes rpmfusion-free-release-tainted
-dnf install --assumeyes rpmfusion-nonfree-release-tainted
+install_rpm_package rpmfusion-free-release-tainted
+install_rpm_package rpmfusion-nonfree-release-tainted
 
 # Using openh264 library
 if [ "$(get_os_type)" == "fedora" ]; then
   if [ "$(command -v dnf4)" ]; then
     dnf4 config-manager --enable --assumeyes fedora-cisco-openh264
-  else
+  elif [ "$(command -v dnf)" ]; then
     dnf config-manager --enable --assumeyes fedora-cisco-openh264
+  else
+    sed -i 's/enabled=0/enabled=1/' /etc/yum.repos.d/fedora-cisco-openh264.repo
   fi
+fi
+
+# Applying update on Fedora Silverblue
+if [ "$(command -v rpm-ostree)" ]; then
+  rpm-ostree apply-live
 fi
