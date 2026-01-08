@@ -7,7 +7,13 @@ source RunAsRoot.bash
 run_as_root
 
 # Installing firewalld
-dnf install --assumeyes firewalld
+if [ "$(command -v dnf)" ]; then
+  dnf install --assumeyes firewalld
+elif [ "$(command -v yum)" ]; then
+  yum install --assumeyes firewalld
+elif [ "$(command -v rpm-ostree)" ]; then
+  rpm-ostree install --assumeyes firewalld
+fi
 
 # Closing all open ports by default
 firewall-cmd --permanent --remove-port=1025-65535/tcp
