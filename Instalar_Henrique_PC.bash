@@ -37,19 +37,8 @@ function run_as_root() {
     # Habilitando RPM Fusion
     bash ./Enable-RpmFusion.bash
 
-    # Trocando o pacote ffmpeg-free por ffmpeg
-    dnf swap --assumeyes --allowerasing ffmpeg-free ffmpeg
-
-    # Instalando o File Roller
-    dnf install --assumeyes file-roller
-    dnf install --assumeyes file-roller-nautilus
-
     # Instalando a Impressora HP
     install_rpm_package hplip
-
-    # Instalando o Suporte a arquivos 7zip
-    dnf install --assumeyes p7zip-plugins
-    dnf install --assumeyes p7zip
 
     # Instalando o KVM
     install_rpm_package qemu-kvm
@@ -67,6 +56,17 @@ function run_as_root() {
 
     # Instalando outros programas
     install_rpm_packages mokutil
+
+    # Instalando o File Roller
+    dnf install --assumeyes file-roller
+    dnf install --assumeyes file-roller-nautilus
+
+    # Trocando o pacote ffmpeg-free por ffmpeg
+    dnf swap --assumeyes --allowerasing ffmpeg-free ffmpeg
+
+    # Instalando o Suporte a arquivos 7zip
+    dnf install --assumeyes p7zip-plugins
+    dnf install --assumeyes p7zip
 
     # Instalando as Ferramentas de desenvolvimento
     dnf install --assumeyes golang
