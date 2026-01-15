@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Importing functions run_as_root, get_os_type and install_rpm_package
+# Importing functions run_as_root, get_os_type and install_rpm_package_system
 source RunAsRoot.bash
 source OsInfo.bash
 source RpmPackageManager.bash
@@ -48,5 +48,5 @@ if [ "$(is_kernel_compatible_with_ntfs3_module)" == 1 ]; then
 
 # Installing ntfs-3g
 else
-  install_rpm_package ntfs-3g
+  install_rpm_package_system ntfs-3g
 fi

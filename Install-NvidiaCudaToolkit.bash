@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Importing functions run_as_root, get_os_type, get_os_version and install_rpm_package
+# Importing functions run_as_root, get_os_type, get_os_version and install_rpm_package_system
 source RunAsRoot.bash
 source OsInfo.bash
 source RpmPackageManager.bash
@@ -41,9 +41,9 @@ fi
 if [ "$(command -v dnf)" ]; then
   dnf module install --allowerasing --refresh --assumeyes nvidia-driver:open-dkms
 else
-  install_rpm_package --allowerasing --refresh nvidia-driver:open-dkms
+  install_rpm_package_system --allowerasing --refresh nvidia-driver:open-dkms
 fi
-install_rpm_package --disablerepo="rpmfusion-nonfree*" cuda
+install_rpm_package_system --disablerepo="rpmfusion-nonfree*" cuda
 
 # Updating grub
 grub2-mkconfig -o /etc/grub2.cfg

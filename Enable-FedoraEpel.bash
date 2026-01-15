@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Importing functions run_as_root, get_os_type and install_rpm_package
+# Importing functions run_as_root, get_os_type and install_rpm_package_system
 source RunAsRoot.bash
 source OsInfo.bash
 source RpmPackageManager.bash
@@ -15,4 +15,4 @@ fi
 run_as_root
 
 # Installing Fedora Epel
-install_rpm_package --nogpgcheck "https://dl.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E %rhel).noarch.rpm"
+install_rpm_package_system --nogpgcheck "https://dl.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E %rhel).noarch.rpm"

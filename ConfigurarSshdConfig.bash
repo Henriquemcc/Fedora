@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Importing functions run_as_root and install_rpm_package
+# Importing functions run_as_root and install_rpm_package_system
 source RunAsRoot.bash
 source RpmPackageManager.bash
 
@@ -8,7 +8,7 @@ source RpmPackageManager.bash
 run_as_root
 
 # Installing Open SSH Server
-install_rpm_package openssh-server
+install_rpm_package_system openssh-server
 
 # Backing up configuration file
 cp "/etc/ssh/sshd_config" "/etc/ssh/sshd_config.backup.$(date "+%d-%m-%Y_%H:%M:%S")"

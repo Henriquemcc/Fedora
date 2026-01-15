@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Importing functions run_as_root and install_rpm_package
+# Importing functions run_as_root and install_rpm_package_system
 source RunAsRoot.bash
 source RpmPackageManager.bash
 
@@ -8,4 +8,4 @@ source RpmPackageManager.bash
 run_as_root
 
 # Installing flatpak
-install_rpm_package flatpak
+install_rpm_package_system flatpak

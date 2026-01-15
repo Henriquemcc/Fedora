@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Importing function run_as_root, get_os_type and install_rpm_package
+# Importing function run_as_root, get_os_type and install_rpm_package_system
 source RunAsRoot.bash
 source OsInfo.bash
 source RpmPackageManager.bash
@@ -24,4 +24,4 @@ fi
 mv ./virtualbox.repo /etc/yum.repos.d/virtualbox.repo
 
 # Installing VirtualBox
-install_rpm_package VirtualBox-7.2
+install_rpm_package_system VirtualBox-7.2

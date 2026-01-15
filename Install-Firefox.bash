@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Importing functions run_as_root and uninstall_rpm_package
+# Importing functions run_as_root and uninstall_rpm_package_system
 source RunAsRoot.bash
 source RpmPackageManager.bash
 
@@ -16,7 +16,7 @@ fi
 flatpak install --assumeyes https://dl.flathub.org/repo/appstream/org.mozilla.firefox.flatpakref
 
 # Removing firefox from RPM
-uninstall_rpm_package firefox
+uninstall_rpm_package_system firefox
 
 # Creating a script to link the old executable to the new executable
 link_path="/bin/firefox"

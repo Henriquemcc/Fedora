@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Importing functions run_as_root and install_rpm_package
+# Importing functions run_as_root and install_rpm_package_system
 source RunAsRoot.bash
 source RpmPackageManager.bash
 
@@ -8,7 +8,7 @@ source RpmPackageManager.bash
 run_as_root
 
 # Installing firewalld
-install_rpm_package firewalld
+install_rpm_package_system firewalld
 
 # Closing all open ports by default
 firewall-cmd --permanent --remove-port=1025-65535/tcp

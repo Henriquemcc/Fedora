@@ -22,7 +22,7 @@ function run_as_root() {
   # Instala pacotes dnf
   function instalar_pacotes_dnf() {
 
-    # Obtendo funções install_rpm_packages e uninstall_rpm_packages
+    # Obtendo funções install_rpm_packages_system e uninstall_rpm_packages_system
     source ./RpmPackageManager.bash
 
     # Configurando gerenciador de pacotes DNF
@@ -38,24 +38,24 @@ function run_as_root() {
     bash ./Enable-RpmFusion.bash
 
     # Instalando a Impressora HP
-    install_rpm_package hplip
+    install_rpm_package_system hplip
 
     # Instalando o KVM
-    install_rpm_package qemu-kvm
-    install_rpm_package libvirt
+    install_rpm_package_system qemu-kvm
+    install_rpm_package_system libvirt
 
     # Instalando os Sistemas de arquivos não nativos do linux
-    install_rpm_package fuse
+    install_rpm_package_system fuse
 
     # Instalando outros programas
-    install_rpm_package sudo-rs
+    install_rpm_package_system sudo-rs
 
     # Instalando ferramentas de segurança
-    install_rpm_package chkrootkit
-    install_rpm_package lynis
+    install_rpm_package_system chkrootkit
+    install_rpm_package_system lynis
 
     # Instalando outros programas
-    install_rpm_package mokutil
+    install_rpm_package_system mokutil
 
     # Instalando o File Roller
     dnf install --assumeyes file-roller

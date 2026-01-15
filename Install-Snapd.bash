@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Importing functions run_as_root and install_rpm_package
+# Importing functions run_as_root and install_rpm_package_system
 source RunAsRoot.bash
 source RpmPackageManager.bash
 
@@ -13,7 +13,7 @@ fi
 run_as_root
 
 # Installing Snap package manager
-install_rpm_package snapd
+install_rpm_package_system snapd
 
 # Enabling Snapd
 systemctl enable --now snapd.socket
@@ -22,9 +22,9 @@ systemctl enable --now snapd.socket
 ln -s /var/lib/snapd/snap /snap
 
 # Installing Kernel modules
-install_rpm_package fuse
-install_rpm_package squashfuse
-install_rpm_package kernel-modules
+install_rpm_package_system fuse
+install_rpm_package_system squashfuse
+install_rpm_package_system kernel-modules
 
 # Installing snap core
 snap install core

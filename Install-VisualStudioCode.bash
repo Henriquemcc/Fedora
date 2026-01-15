@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Importing functions run_as_root and uninstall_rpm_package
+# Importing functions run_as_root and uninstall_rpm_package_system
 source RunAsRoot.bash
 source RpmPackageManager.bash
 

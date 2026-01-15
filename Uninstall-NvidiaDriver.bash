@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Importing functions run_as_root, get_os_type, get_os_version and uninstall_rpm_package
+# Importing functions run_as_root, get_os_type, get_os_version and uninstall_rpm_package_system
 source RunAsRoot.bash
 source OsInfo.bash
 source RpmPackageManager.bash
@@ -12,14 +12,14 @@ run_as_root
 rm "/etc/modules-load.d/nvidia.conf"
 
 # Removing Nvidia Cuda ToolKit
-uninstall_rpm_package cuda-toolkit
+uninstall_rpm_package_system cuda-toolkit
 
 # Removing GPUDirect Filesystem
-uninstall_rpm_package nvidia-gds
+uninstall_rpm_package_system nvidia-gds
 
 # Removing Nvidia driver
 dnf module reset --assumeyes nvidia-driver
-uninstall_rpm_package nvidia-driver
+uninstall_rpm_package_system nvidia-driver
 
 # Removing repository
 if [ "$(command -v dnf4)" ]; then

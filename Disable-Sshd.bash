@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Importing functions run_as_root and uninstall_rpm_package
+# Importing functions run_as_root and uninstall_rpm_package_system
 source RunAsRoot.bash
 source RpmPackageManager.bash
 
@@ -15,4 +15,4 @@ firewall-cmd --remove-service=ssh --permanent
 firewall-cmd --reload
 
 # Uninstalling sshd
-uninstall_rpm_package openssh-server
+uninstall_rpm_package_system openssh-server

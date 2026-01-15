@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Importing functions run_as_root, get_os_type and install_rpm_package
+# Importing functions run_as_root, get_os_type and install_rpm_package_system
 source RunAsRoot.bash
 source OsInfo.bash
 source RpmPackageManager.bash
@@ -13,14 +13,14 @@ bash Enable-FedoraEpel.bash
 
 # Installing RPM Fusion
 if [ "$(get_os_type)" == "rhel" ] || [ "$(get_os_type)" == "centos" ] || [ "$(get_os_type)" == "almalinux" ] || [ "$(get_os_type)" == "ol" ]; then
-  install_rpm_package --nogpgcheck "https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-$(rpm -E %rhel).noarch.rpm"
-  install_rpm_package --nogpgcheck "https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-$(rpm -E %rhel).noarch.rpm"
+  install_rpm_package_system --nogpgcheck "https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-$(rpm -E %rhel).noarch.rpm"
+  install_rpm_package_system --nogpgcheck "https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-$(rpm -E %rhel).noarch.rpm"
 elif [ "$(get_os_type)" == "fedora" ]; then
-  install_rpm_package "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm"
-  install_rpm_package "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm"
+  install_rpm_package_system "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm"
+  install_rpm_package_system "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm"
 fi
-install_rpm_package rpmfusion-free-release-tainted
-install_rpm_package rpmfusion-nonfree-release-tainted
+install_rpm_package_system rpmfusion-free-release-tainted
+install_rpm_package_system rpmfusion-nonfree-release-tainted
 
 # Using openh264 library
 if [ "$(get_os_type)" == "fedora" ]; then

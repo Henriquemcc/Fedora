@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Importing functions run_as_root and install_rpm_package
+# Importing functions run_as_root and install_rpm_package_system
 source RunAsRoot.bash
 source RpmPackageManager.bash
 
@@ -8,7 +8,7 @@ source RpmPackageManager.bash
 run_as_root
 
 # Installing chrony
-install_rpm_package chrony
+install_rpm_package_system chrony
 
 # Backing up configuration file
 cp "/etc/chrony/chrony.conf" "/etc/chrony/chrony.conf.backup.$(date "+%d-%m-%Y_%H:%M:%S")"

@@ -5,12 +5,12 @@ if ! [ "$(command -v gnome-shell)" ]; then
   exit 0
 fi
 
-# Importing functions install_rpm_package
+# Importing functions install_rpm_package_system
 source RpmPackageManager.bash
 
 # Instalando apps
 sudo flatpak install --assumeyes https://dl.flathub.org/repo/appstream/org.gnome.Extensions.flatpakref
-sudo bash -c "$(declare -f install_rpm_package); install_rpm_package gnome-tweaks"
+sudo bash -c "$(declare -f install_rpm_package_system); install_rpm_package_system gnome-tweaks"
 
 # Desabilitando hot corners
 gsettings set org.gnome.desktop.interface enable-hot-corners false

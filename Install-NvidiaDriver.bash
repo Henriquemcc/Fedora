@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Importing functions run_as_root, get_os_type, get_os_version and install_rpm_package
+# Importing functions run_as_root, get_os_type, get_os_version and install_rpm_package_system
 source RunAsRoot.bash
 source OsInfo.bash
 source RpmPackageManager.bash
@@ -41,14 +41,14 @@ fi
 if [ "$(command -v dnf)" ]; then
   dnf module install --assumeyes --allowerasing nvidia-driver
 else
-  install_rpm_package --allowerasing nvidia-driver
+  install_rpm_package_system --allowerasing nvidia-driver
 fi
 
 # Installing Nvidia Cuda ToolKit
-install_rpm_package cuda-toolkit
+install_rpm_package_system cuda-toolkit
 
 # Installing GPUDirect Filesystem
-install_rpm_package nvidia-gds
+install_rpm_package_system nvidia-gds
 
 # Enabling kernel module
 echo "nvidia" > "/etc/modules-load.d/nvidia.conf"

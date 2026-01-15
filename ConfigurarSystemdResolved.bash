@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Importing functions run_as_root and install_rpm_package
+# Importing functions run_as_root and install_rpm_package_system
 source RunAsRoot.bash
 source RpmPackageManager.bash
 
@@ -8,7 +8,7 @@ source RpmPackageManager.bash
 run_as_root
 
 # Installing systemd-resolved
-install_rpm_package systemd-resolved NetworkManager || exit 1
+install_rpm_package_system systemd-resolved NetworkManager || exit 1
 
 # Enabling systemd-resolved service
 systemctl enable --now systemd-resolved.service NetworkManager

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Importing functions run_as_root, get_os_type and install_rpm_package
+# Importing functions run_as_root, get_os_type and install_rpm_package_system
 source RunAsRoot.bash
 source OsInfo.bash
 source RpmPackageManager.bash
@@ -9,7 +9,7 @@ source RpmPackageManager.bash
 run_as_root
 
 # Installing requirements
-install_rpm_package dnf-plugins-core
+install_rpm_package_system dnf-plugins-core
 
 # Applying update on Fedora Silverblue
 if [ "$(command -v rpm-ostree)" ]; then
@@ -32,7 +32,7 @@ else
 fi
 
 # Installing Docker Engine
-install_rpm_package --allowerasing docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+install_rpm_package_system --allowerasing docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # Enabling Docker
 systemctl enable --now docker containerd.service

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Importing function run_as_root, get_os_type, get_os_version and uninstall_rpm_package
+# Importing function run_as_root, get_os_type, get_os_version and uninstall_rpm_package_system
 source RunAsRoot.bash
 source OsInfo.bash
 source RpmPackageManager.bash
@@ -10,8 +10,8 @@ run_as_root
 
 # Removing Nvidia Cuda
 dnf module reset nvidia-driver
-uninstall_rpm_package nvidia-driver
-uninstall_rpm_package cuda
+uninstall_rpm_package_system nvidia-driver
+uninstall_rpm_package_system cuda
 
 # Removing repository
 if [ "$(command -v dnf4)" ]; then
