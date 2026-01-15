@@ -3,8 +3,21 @@
 # Importing function run_as_root
 source RunAsRoot.bash
 
-# Running as root
-run_as_root
+# Installing on Fedora, RHEL, CentOS, AlmaLinux or OracleLinux
+if [ "$(command -v dnf)" ]; then
+    # Running as root
+    run_as_root
 
-# Installing Google Chrome Beta
-dnf install --assumeyes https://dl.google.com/linux/direct/google-chrome-beta_current_x86_64.rpm
+    # Installing Google Chrome Beta
+    dnf install --assumeyes https://dl.google.com/linux/direct/google-chrome-beta_current_x86_64.rpm
+
+# Installing on Fedora SilverBlue
+elif [ "$(command -v toolbox)" ]; then
+    toolbox create --distro fedora -c Google
+    toolbox run -c Google sudo dnf install --assumeyes https://dl.google.com/linux/direct/google-chrome-beta_current_x86_64.rpm
+    toolbox run -c Google cp /usr/share/applications/google-chrome-beta.desktop ~/.local/share/applications/google-chrome-beta.desktop
+    sed -i 's|^Exec=|Exec=toolbox run -c Google |g' ~/.local/share/applications/google-chrome-beta.desktop
+    mkdir -p ~/.local/share/icons
+    toolbox run -c Google find /usr/share/icons -name "google-chrome-beta.png" -exec cp {} ~/.local/share/icons/ \;
+    sed -i "s|^Icon=.*|Icon=$HOME/.local/share/icons/google-chrome-beta.png|g" ~/.local/share/applications/google-chrome-beta.desktop
+fi
