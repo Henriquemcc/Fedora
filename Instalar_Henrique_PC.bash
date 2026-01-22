@@ -312,3 +312,6 @@ else
     sudo bash -c "$(declare -f run_as_root); run_as_root"
   fi
 fi
+
+# Baixando chaves públicas ssh
+bash ./Get-SshPublicKeysFromGithub.bash
