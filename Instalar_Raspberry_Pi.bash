@@ -81,3 +81,6 @@ if [ "$(whoami)" == "root" ]; then
 else
   sudo bash -c "$(declare -f run_as_root); run_as_root"
 fi
+
+# Baixando chaves públicas ssh
+bash ./Get-SshPublicKeysFromGithub.bash
