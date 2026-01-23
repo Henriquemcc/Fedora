@@ -199,6 +199,9 @@ function run_as_root() {
     # Instalando o Steam
     flatpak install --assumeyes https://dl.flathub.org/repo/appstream/com.valvesoftware.Steam.flatpakref
 
+    # Instalando o Hytale
+    flatpak install --assumeyes https://launcher.hytale.com/builds/release/linux/amd64/hytale-launcher-latest.flatpak
+
     # Instalando o qbittorrent
     flatpak install --assumeyes https://dl.flathub.org/repo/appstream/org.qbittorrent.qBittorrent.flatpakref
   }
