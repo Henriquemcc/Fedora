@@ -99,6 +99,7 @@ function run_as_root() {
     dnf install --assumeyes brasero
     dnf install --assumeyes rclone
     dnf install --assumeyes wireshark
+    dnf install --assumeyes detox
 
     # Instalando o Draw.io
     dnf install --assumeyes "https://github.com/jgraph/drawio-desktop/releases/download/v26.2.15/drawio-x86_64-26.2.15.rpm"
