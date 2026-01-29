@@ -83,6 +83,11 @@ function run_as_root() {
     dnf install --assumeyes python3-pip
     dnf install --assumeyes python3-devel
 
+    # Instalando ferramentas para manipular arquivos PDF
+    dnf install --assumeyes ImageMagick
+    dnf install --assumeyes pdftk-java
+    dnf install --assumeyes ocrmypdf
+
     # Instalando outros programas
     dnf install --assumeyes vlc
     dnf install --assumeyes stacer
@@ -93,8 +98,6 @@ function run_as_root() {
     dnf install --assumeyes yt-dlp
     dnf install --assumeyes ffmpeg
     dnf install --assumeyes fdupes
-    dnf install --assumeyes ImageMagick
-    dnf install --assumeyes pdftk-java
     dnf install --assumeyes wol
     dnf install --assumeyes brasero
     dnf install --assumeyes rclone
