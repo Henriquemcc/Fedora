@@ -292,9 +292,6 @@ function run_as_root() {
 
   # Instalando GitHub Cli
   bash ./Install-GithubCli.bash
-
-  # Configurando o remapeamento do teclado
-  bash ./ConfigurarRemapeamentoTeclado.bash
 }
 
 # Configurando o Gnome Shell
