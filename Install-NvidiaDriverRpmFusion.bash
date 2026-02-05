@@ -16,8 +16,11 @@ fi
 bash ./Enable-RpmFusion.bash
 
 # Installing nvidia driver and nvidia cuda
-install_rpm_package --allowerasing akmod-nvidia
+install_rpm_package --allowerasing akmod-nvidia-open
 install_rpm_package --allowerasing xorg-x11-drv-nvidia-cuda
 
 # Enabling kernel module
 echo "nvidia" > "/etc/modules-load.d/nvidia.conf"
+
+# Signing kernel module
+bash ./Sign-Nvidia.bash
