@@ -53,6 +53,7 @@ function sign_nvidia_modules() {
     done
 
     echo "Assinatura concluída. Carregando módulos..."
+    depmod -a
     modprobe nvidia
   fi
 }
