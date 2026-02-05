@@ -48,8 +48,7 @@ function sign_nvidia_modules() {
       # Lógica para arquivos .ko diretos [cite: 5]
       elif [[ "$module" == *.ko ]]; then
         echo "Assinando: $module"
-        command_to_sign="$sign_file_binary_path sha256 \"$path_private_key\" \"$path_public_key\" \"$module\""
-        eval "$command_to_sign" [cite: 5]
+        "$sign_file_binary_path" sha256 "$path_private_key" "$path_public_key" "$module"
       fi
     done
 
