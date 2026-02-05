@@ -7,6 +7,9 @@ function sign_nvidia_modules() {
   # Verifica se o Secure Boot está ativo
   if [ "$(mokutil --sb-state)" == "SecureBoot enabled" ]; then
 
+    # Checking if private and public keys file exist
+    bash ./New-KernelModulesPairOfKeys.bash
+
     # Caminhos definidos nos seus scripts anteriores [cite: 8]
     path_folder_signed_modules="/root/signed-modules"
     path_private_key="$path_folder_signed_modules/private_key.priv"
