@@ -12,6 +12,10 @@ dnf install --assumeyes cargo
 # Instalando programa que remapeia teclado
 cargo install xremap --features gnome
 
+# Copiando o binário para a pasta /usr/local/bin/
+executable_file_path="/usr/local/bin/xremap"
+cp /root/.cargo/bin/xremap "$executable_file_path"
+
 # Configurando o remapeamento do teclado
 keyboard_mapper_file="/etc/xremap/keyboard.yml"
 mkdir -p "$(dirname $keyboard_mapper_file)"
@@ -25,7 +29,6 @@ if ! [ -f "$keyboard_mapper_file" ]; then
 fi
 
 # Criando serviço no Systemd
-executable_file_path="/root/.cargo/bin/xremap"
 service_name="remapear-teclado.service"
 service_file_path="/etc/systemd/system/${service_name}"
 {
