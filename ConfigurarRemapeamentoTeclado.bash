@@ -41,3 +41,33 @@ service_file_path="/etc/systemd/system/${service_name}"
 
 # Recarregando systemd para reconhecer o novo serviço
 systemctl daemon-reload
+
+# Criando uma política no SELinux
+policy_directory="/tmp/selinux/xremap"
+mkdir -p "$policy_directory"
+{
+  echo
+  echo "module xremap_policy 1.0;"
+  echo
+  echo "require {"
+  echo "	type admin_home_t;"
+  echo "	type init_t;"
+  echo "	type event_device_t;"
+  echo "	class file { execute execute_no_trans map open read };"
+  echo "	class chr_file open;"
+  echo "}"
+  echo
+  echo "  #============= init_t =============="
+  echo "allow init_t admin_home_t:file { execute execute_no_trans open read };"
+  echo
+  echo "#!!!! This avc can be allowed using the boolean 'domain_can_mmap_files'"
+  echo "allow init_t admin_home_t:file map;"
+  echo "allow init_t event_device_t:chr_file open;"
+} > "$policy_directory/xremap_policy.te"
+
+# Compilando a política SELinux
+cd "$$policy_directory" || exit 1
+make -f /usr/share/selinux/devel/Makefile xremap_policy.pp
+
+# Instalando política SELinux
+semodule -i xremap_policy.pp
