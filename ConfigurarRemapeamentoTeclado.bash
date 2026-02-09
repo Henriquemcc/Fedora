@@ -34,12 +34,14 @@ service_file_path="/etc/systemd/system/${service_name}"
 {
   echo "[Unit]"
   echo "Description=Remapeamento do teclado utilizando o xremap"
-  echo ""
+  echo
   echo "[Service]"
   echo "Type=simple"
   echo "ExecStart=${executable_file_path} ${keyboard_mapper_file}"
   echo "Restart=on-failure"
+  echo
   echo "[Install]"
+  echo "WantedBy=multi-user.target"
 } > "$service_file_path"
 
 # Recarregando systemd para reconhecer o novo serviço
