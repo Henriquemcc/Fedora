@@ -69,7 +69,7 @@ mkdir -p "$policy_directory"
 } > "$policy_directory/xremap_policy.te"
 
 # Compilando a política SELinux
-cd "$$policy_directory" || exit 1
+cd "$policy_directory" || exit 1
 make -f /usr/share/selinux/devel/Makefile xremap_policy.pp
 
 # Instalando política SELinux
