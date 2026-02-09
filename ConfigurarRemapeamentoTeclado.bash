@@ -46,3 +46,7 @@ service_file_path="/etc/systemd/system/${service_name}"
 
 # Recarregando systemd para reconhecer o novo serviço
 systemctl daemon-reload
+
+# Habilitando e iniciando serviço
+systemctl enable remapear-teclado.service
+systemctl start remapear-teclado.service
