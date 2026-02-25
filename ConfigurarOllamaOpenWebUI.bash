@@ -34,3 +34,9 @@ curl -L "https://ollama.com/public/ollama.png" -o "$path_logo"
   echo "Keywords=ollama; open; web; ui;"
   echo "StartupNotify=true"
 } > "$HOME/.local/share/applications/OpenWebUI.desktop"
+
+# Baixando modelos
+ollama serve &
+ollama pull deepseek-r1
+ollama pull gpt-oss
+ollama pull mistral
