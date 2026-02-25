@@ -1,15 +1,30 @@
 #!/bin/bash
 
-# Instalando Docker
-if ! [ "$(command -v docker)" ]; then
-  bash ./Install-DockerEngine.bash
+# Instalação de pacotes no sistema
+function run_as_root() {
+
+  # Instalando Docker
+  if ! [ "$(command -v docker)" ]; then
+    bash ./Install-DockerEngine.bash
+  fi
+
+  # Instalando ollama
+  dnf install --assumeyes ollama
+
+  # Instalando Nvidia Container
+  bash ./Install-NvidiaContainer.bash
+}
+
+# Executando instalação de pacotes no sistema
+if [ "$(whoami)" == "root" ]; then
+   bash -c "$(declare -f run_as_root); run_as_root"
+else
+  if [ "$(command -v sudo-rs)" ]; then
+    sudo-rs bash -c "$(declare -f run_as_root); run_as_root"
+  else
+    sudo bash -c "$(declare -f run_as_root); run_as_root"
+  fi
 fi
-
-# Instalando ollama
-sudo dnf install --assumeyes ollama
-
-# Instalando Nvidia Container
-bash ./Install-NvidiaContainer.bash
 
 # Copiando script de inicialização
 path_script_inicializacao="$HOME/.bin/Iniciar_OllamaOpenWebUI.bash"
