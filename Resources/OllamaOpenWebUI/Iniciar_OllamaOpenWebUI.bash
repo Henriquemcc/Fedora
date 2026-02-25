@@ -29,11 +29,11 @@ docker pull "$container_image"
 # -------------------------------------------------
 run_args=(
     -d                       # detached
-    -p 3000:8080             # porta local -> porta do container
-    --add-host=host.docker.internal:host-gateway
+    --network=host
     -v open-webui:/app/backend/data
     --name "$container_name"
     --restart unless-stopped
+    -e OLLAMA_BASE_URL=http://127.0.0.1:11434
 )
 
 # Só adiciona a flag de GPU se houver GPU detectada
@@ -58,4 +58,4 @@ fi
 # -------------------------------------------------
 # Abre o navegador apontando para a UI
 # -------------------------------------------------
-xdg-open "http://localhost:3000"
+xdg-open "http://localhost:8080"
