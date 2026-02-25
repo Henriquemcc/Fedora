@@ -5,11 +5,11 @@ if ! [ "$(command -v docker)" ]; then
   bash ./Install-DockerEngine.bash
 fi
 
-# Instalando Nvidia Container
-bash ./Install-NvidiaContainer.bash
-
 # Instalando ollama
 sudo dnf install --assumeyes ollama
+
+# Instalando Nvidia Container
+bash ./Install-NvidiaContainer.bash
 
 # Copiando script de inicialização
 path_script_inicializacao="$HOME/.bin/Iniciar_OllamaOpenWebUI.bash"
