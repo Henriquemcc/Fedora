@@ -5,6 +5,9 @@ if ! [ "$(command -v docker)" ]; then
   bash ./Install-DockerEngine.bash
 fi
 
+# Instalando Nvidia Container
+bash ./Install-NvidiaContainer.bash
+
 # Instalando ollama
 sudo dnf install --assumeyes ollama
 
@@ -12,6 +15,7 @@ sudo dnf install --assumeyes ollama
 path_script_inicializacao="$HOME/.bin/Iniciar_OllamaOpenWebUI.bash"
 mkdir -p "$(dirname "$path_script_inicializacao")"
 cp "Resources/OllamaOpenWebUI/Iniciar_OllamaOpenWebUI.bash" "$path_script_inicializacao"
+chmod +x "$path_script_inicializacao"
 
 # Baixando logo do Ollama
 path_logo="$HOME/.local/share/icons/hicolor/181x256/ollama.png"
