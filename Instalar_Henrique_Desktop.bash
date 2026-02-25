@@ -20,3 +20,6 @@ else
     sudo bash -c "$(declare -f run_as_root); run_as_root"
   fi
 fi
+
+# Instalando e configurando Ollama e OpenWebUI
+bash ./ConfigurarOllamaOpenWebUI.bash
