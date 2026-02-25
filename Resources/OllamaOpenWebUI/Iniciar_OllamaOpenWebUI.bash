@@ -1,34 +1,61 @@
 #!/bin/bash
 
-# Variáveis
+# -------------------------------------------------
+# Configurações
+# -------------------------------------------------
 container_name="open-webui"
 
-# Definindo imagem do container
-if lspci | grep -i nvidia; then
-  container_image="ghcr.io/open-webui/open-webui:cuda"
+# Detecta se há GPU NVIDIA
+if lspci | grep -i nvidia > /dev/null; then
+    gpu_present=true
+    container_image="ghcr.io/open-webui/open-webui:cuda"
 else
-  container_image="ghcr.io/open-webui/open-webui:main"
+    gpu_present=false
+    container_image="ghcr.io/open-webui/open-webui:main"
 fi
 
-# Iniciando o ollama
+# -------------------------------------------------
+# Inicia o servidor Ollama em background
+# -------------------------------------------------
 ollama serve &
 
-# Baixando imagem do container
+# -------------------------------------------------
+# Baixa a imagem do container
+# -------------------------------------------------
 docker pull "$container_image"
 
-# Criando o container caso ele não exista
-if ! [ "$(docker ps -a | grep -wc "$container_name")" -gt 0 ]; then
-  docker run -d -p 3000:8080 \
-          --gpus all --add-host=host.docker.internal:host-gateway \
-          -v open-webui:/app/backend/data \
-          --name open-webui --restart unless-stopped \
-          "$container_image"
+# -------------------------------------------------
+# Monta os argumentos do docker run
+# -------------------------------------------------
+run_args=(
+    -d                       # detached
+    -p 3000:8080             # porta local -> porta do container
+    --add-host=host.docker.internal:host-gateway
+    -v open-webui:/app/backend/data
+    --name "$container_name"
+    --restart unless-stopped
+)
+
+# Só adiciona a flag de GPU se houver GPU detectada
+if $gpu_present; then
+    run_args+=(--gpus all)
 fi
 
-# Iniciando container caso ele não esteja em execução
-if ! [ "$(docker ps | grep -wc "$container_name")" -gt 0 ]; then
-  docker start "$container_name"
+# -------------------------------------------------
+# Cria o container caso ainda não exista
+# -------------------------------------------------
+if ! docker ps -a --format '{{.Names}}' | grep -wq "$container_name"; then
+    docker run "${run_args[@]}" "$container_image"
 fi
 
-# Abrindo o navegador web padrão na página do Open-WebUI
+# -------------------------------------------------
+# Garante que o container esteja em execução
+# -------------------------------------------------
+if ! docker ps --format '{{.Names}}' | grep -wq "$container_name"; then
+    docker start "$container_name"
+fi
+
+# -------------------------------------------------
+# Abre o navegador apontando para a UI
+# -------------------------------------------------
 xdg-open "http://localhost:3000"
