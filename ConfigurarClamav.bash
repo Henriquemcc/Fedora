@@ -26,6 +26,9 @@ cp /etc/clamd.d/scan.conf /etc/clamd.d/scan.conf.backup.$(date "+%d-%m-%Y_%H:%M:
 # Creating usergroup virusgroup
 gpasswd -a "$SUDO_USER" virusgroup
 
+# Allowing Clamav to operate under SELinux
+setsebool -P antivirus_can_scan_system 1
+
 # Enabling Clamav
 systemctl enable clamd@scan clamav-freshclam
 systemctl start clamd@scan clamav-freshclam
