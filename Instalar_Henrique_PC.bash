@@ -220,6 +220,9 @@ function run_as_root() {
   # Configurando Firewalld
   bash ./ConfigurarFirewalld.bash
 
+  # Configurando o Clamav
+  bash ./ConfigurarClamav.bash
+
   # Desabilitando o Cockpit
   bash ./Disable-Cockpit.bash
 
