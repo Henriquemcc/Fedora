@@ -7,6 +7,9 @@ source RpmPackageManager.bash
 # Running as root
 run_as_root
 
+# Installing requirements
+bash ./Install-Flatpak.bash
+
 # Installing ClamUI
 flatpak install -y https://dl.flathub.org/repo/appstream/io.github.linx_systems.ClamUI.flatpakref
 
