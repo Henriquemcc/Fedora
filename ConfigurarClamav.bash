@@ -11,7 +11,7 @@ run_as_root
 flatpak install -y https://dl.flathub.org/repo/appstream/io.github.linx_systems.ClamUI.flatpakref
 
 # Installing Clamav
-install_rpm_package clamav clamd
+install_rpm_package clamav clamd clamav-freshclam
 
 # Backing up configuration file
 cp /etc/clamd.d/scan.conf /etc/clamd.d/scan.conf.backup.$(date "+%d-%m-%Y_%H:%M:%S")
@@ -27,5 +27,5 @@ cp /etc/clamd.d/scan.conf /etc/clamd.d/scan.conf.backup.$(date "+%d-%m-%Y_%H:%M:
 gpasswd -a "$SUDO_USER" virusgroup
 
 # Enabling Clamav
-systemctl enable clamd@scan
-systemctl start clamd@scan
+systemctl enable clamd@scan clamav-freshclam
+systemctl start clamd@scan clamav-freshclam
