@@ -43,26 +43,32 @@ mkdir -p "$installation_directory"
 cp "$data_extraction_dir_path/opt/pt/packettracer.AppImage" "$installation_directory/packettracer.AppImage"
 
 # Creating .desktop files
-{
-  echo "[Desktop Entry]"
-  echo "Name=Cisco Packet Tracer 9.0.0"
-  echo "Type=Application"
-  echo "Categories=Education"
-  echo "Exec=\"$installation_directory/packettracer.AppImage\" %f"
-  echo "Icon=Cisco_Packet_Tracer_9.0.0"
-  echo "Terminal=true"
-  echo "StartupNotify=true"
-  echo "MimeType=application/x-pkt;application/x-pka;application/x-pkz;application/x-pks;application/x-pksz;"
-} > "$HOME/.local/share/applications/CiscoPacketTracer-9.0.0.desktop"
+desktop_file="$HOME/.local/share/applications/CiscoPacketTracer-9.0.0.desktop"
+if ! [ -f "$desktop_file" ]; then
+  {
+    echo "[Desktop Entry]"
+    echo "Name=Cisco Packet Tracer 9.0.0"
+    echo "Type=Application"
+    echo "Categories=Education"
+    echo "Exec=\"$installation_directory/packettracer.AppImage\" %f"
+    echo "Icon=Cisco_Packet_Tracer_9.0.0"
+    echo "Terminal=true"
+    echo "StartupNotify=true"
+    echo "MimeType=application/x-pkt;application/x-pka;application/x-pkz;application/x-pks;application/x-pksz;"
+  } > "$desktop_file"
+fi
 
-{
-  echo "[Desktop Entry]"
-  echo "Name=Cisco Packet Tracer 9.0.0 (PTSA)"
-  echo "Type=Application"
-  echo "Categories=Education;"
-  echo "Exec=\"$installation_directory/packettracer.AppImage\" -uri=%u"
-  echo "Icon=Cisco_Packet_Tracer_9.0.0"
-  echo "Terminal=true"
-  echo "StartupNotify=true"
-  echo "MimeType=x-scheme-handler/pttp;"
-} > "$HOME/.local/share/applications/CiscoPacketTracerPtsa-9.0.0.desktop"
+desktop_file="$HOME/.local/share/applications/CiscoPacketTracerPtsa-9.0.0.desktop"
+if ! [ -f "$desktop_file" ]; then
+  {
+    echo "[Desktop Entry]"
+    echo "Name=Cisco Packet Tracer 9.0.0 (PTSA)"
+    echo "Type=Application"
+    echo "Categories=Education;"
+    echo "Exec=\"$installation_directory/packettracer.AppImage\" -uri=%u"
+    echo "Icon=Cisco_Packet_Tracer_9.0.0"
+    echo "Terminal=true"
+    echo "StartupNotify=true"
+    echo "MimeType=x-scheme-handler/pttp;"
+  } > "$desktop_file"
+fi
