@@ -303,6 +303,9 @@ bash ./ConfigurarGnomeShell.bash
 # Configurando o Git
 bash ./ConfigurarGit.bash
 
+# Instalando o Packet Tracer
+bash ./Install-PacketTracer.bash
+
 # Instalando o TechnicLauncher
 bash ./Install-TechnicLauncher.bash
 
