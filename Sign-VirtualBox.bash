@@ -15,6 +15,17 @@ function sign_virtualbox_modules() {
     path_private_key="$path_folder_signed_modules/private_key.priv"
     path_public_key="$path_folder_signed_modules/public_key.der"
 
+    # Creating symbolic link of private key and public key
+    ## Creating folder
+    shim_signed_folder="/var/lib/shim-signed/mok"
+    mkdir -p "$shim_signed_folder"
+    ## Private key
+    path_symbolic_link_private_key="$shim_signed_folder/MOK.priv"
+    ln --symbolic "$path_private_key" "$path_symbolic_link_private_key"
+    ## Public key
+    path_symbolic_link_public_key="$shim_signed_folder/MOK.der"
+    ln --symbolic "$path_public_key" "$path_symbolic_link_public_key"
+
     sign_file_binary_path="/usr/src/kernels/$(uname -r)/scripts/sign-file"
 
     path_virtualbox_modules_directory="$(dirname "$(modinfo -n vboxdrv)")"
