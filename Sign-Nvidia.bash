@@ -39,7 +39,7 @@ function sign_nvidia_modules() {
         module_decompressed="${module::-3}"
 
         command_to_sign="$sign_file_binary_path sha256 \"$path_private_key\" \"$path_public_key\" \"$module_decompressed\""
-        eval "$command_to_sign" [cite: 4, 5]
+        eval "$command_to_sign"
 
         # Optional: Repackage or remove the old .xz file so the kernel loads the signed .ko file.
         rm "$module"
