@@ -279,6 +279,9 @@ function run_as_root() {
   # Configurando o Docker
   bash ./ConfigurarDocker.bash
 
+  # Instalando o Kubernetes
+  bash ./Install-Kubernetes.bash
+
   # Instalando o VirtualBox
   bash ./Install-OracleVirtualBox.bash
   bash ./Sign-VirtualBox.bash
