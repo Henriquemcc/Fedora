@@ -31,11 +31,10 @@ curl -fsSL https://opencode.ai/install | bash
 
 # Baixando modelos no Ollama
 ollama serve &
-ollama pull qwen3.5
-ollama pull glm-5.2:cloud
-ollama pull deepseek-r1
-ollama pull mistral
-ollama pull gpt-oss
+ollama pull qwen3.5:latest
+ollama pull deepseek-r1:latest
+ollama pull mistral:latest
+ollama pull gpt-oss:latest
 
 # Garantindo que o diretório de config existe
 mkdir -p "$HOME/.config/opencode"
