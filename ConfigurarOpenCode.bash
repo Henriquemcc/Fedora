@@ -54,9 +54,6 @@ cat > "$HOME/.config/opencode/opencode.json" << 'EOF'
         "qwen3.5": {
           "name": "qwen3.5"
         },
-        "glm-5.2": {
-          "name": "glm-5.2"
-        },
         "deepseek-r1": {
           "name": "deepseek-r1"
         },
