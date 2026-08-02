@@ -128,6 +128,10 @@ function run_as_root() {
     done
 
     while true; do
+      snap install helm --classic && break
+    done
+
+    while true; do
       snap install flutter --classic && break
     done
 
