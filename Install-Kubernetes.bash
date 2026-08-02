@@ -25,4 +25,17 @@ kubectl completion bash > /etc/bash_completion.d/kubectl
 chmod a+r /etc/bash_completion.d/kubectl
 
 # Installing minikube
-install_rpm_package https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
+if [ "$(uname -m)" == "x86_64" ]; then
+  install_rpm_package https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
+elif [ "$(uname -m)" == "aarch64" ]; then
+  install_rpm_package https://storage.googleapis.com/minikube/releases/latest/minikube-latest.aarch64.rpm
+fi
+
+# Installing Kind
+if [ "$(uname -m)" == "x86_64" ]; then
+  curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.32.0/kind-linux-amd64
+elif [ "$(uname -m)" = "aarch64" ]; then
+  curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.32.0/kind-linux-arm64
+fi
+chmod +x ./kind
+mv ./kind /usr/local/bin/kind
