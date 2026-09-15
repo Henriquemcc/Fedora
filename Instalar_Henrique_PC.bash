@@ -264,9 +264,9 @@ function run_as_root() {
   instalar_pacotes_dnf
 
   # Instalando Java
-  bash ./Install-Java_8_Gui.bash
-  bash ./Install-Java_21_Gui.bash
-  bash ./Install-Java_21_Devel.bash
+  bash ./Install-Java_27_Headless.bash
+  bash ./Install-Java_27_Gui.bash
+  bash ./Install-Java_27_Devel.bash
 
   # Instalando o Wireguard
   bash ./Wireguard/Install-Wireguard.bash
