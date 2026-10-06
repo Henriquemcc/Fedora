@@ -132,6 +132,10 @@ function run_as_root() {
     done
 
     while true; do
+      snap install open-pdf-studio && break
+    done
+
+    while true; do
       snap install flutter --classic && break
     done
 
