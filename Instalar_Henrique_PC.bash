@@ -106,6 +106,12 @@ function run_as_root() {
 
     # Instalando o Draw.io
     dnf install --assumeyes "https://github.com/jgraph/drawio-desktop/releases/download/v26.2.15/drawio-x86_64-26.2.15.rpm"
+
+    # Instalando suite do ArtCraft
+    dnf install --assumeyes "https://github.com/storytold/craft-launcher/releases/download/v0.3.2/artcraft-launcher-0.3.2-linux-x86_64.rpm"
+    dnf install --assumeyes "https://github.com/storytold/pdfcraft/releases/download/v0.6.0/pdfcraft-0.6.0-linux-x86_64.rpm"
+    dnf install --assumeyes "https://github.com/storytold/photocraft/releases/download/v0.7.0/photocraft-0.7.0-linux-x86_64.rpm"
+    dnf install --assumeyes "https://github.com/storytold/filmcraft/releases/download/v0.6.0/filmcraft-0.6.0-linux-x86_64.rpm"
   }
 
   # Instala pacotes snap
