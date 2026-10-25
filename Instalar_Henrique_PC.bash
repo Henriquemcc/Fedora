@@ -102,7 +102,10 @@ function run_as_root() {
     dnf install --assumeyes brasero
     dnf install --assumeyes rclone
     dnf install --assumeyes wireshark
+    dnf install --assumeyes nmap
+    dnf install --assumeyes wireguard-tools
     dnf install --assumeyes detox
+    dnf install --assumeyes steam
 
     # Instalando o Draw.io
     dnf install --assumeyes "https://github.com/jgraph/drawio-desktop/releases/download/v26.2.15/drawio-x86_64-26.2.15.rpm"
@@ -112,6 +115,9 @@ function run_as_root() {
     dnf install --assumeyes "https://github.com/storytold/pdfcraft/releases/download/v0.6.0/pdfcraft-0.6.0-linux-x86_64.rpm"
     dnf install --assumeyes "https://github.com/storytold/photocraft/releases/download/v0.7.0/photocraft-0.7.0-linux-x86_64.rpm"
     dnf install --assumeyes "https://github.com/storytold/filmcraft/releases/download/v0.6.0/filmcraft-0.6.0-linux-x86_64.rpm"
+
+    # Instalando o TeamViewer
+    dnf install --assumeyes "https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm"
   }
 
   # Instala pacotes snap
@@ -216,9 +222,6 @@ function run_as_root() {
 
     # Instalando o Packet (Quick-Share)
     flatpak install --assumeyes https://dl.flathub.org/repo/appstream/io.github.nozwock.Packet.flatpakref
-
-    # Instalando o Steam
-    flatpak install --assumeyes https://dl.flathub.org/repo/appstream/com.valvesoftware.Steam.flatpakref
 
     # Instalando o Hytale
     flatpak install --assumeyes https://launcher.hytale.com/builds/release/linux/amd64/hytale-launcher-latest.flatpak
