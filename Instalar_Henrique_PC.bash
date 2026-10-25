@@ -112,6 +112,9 @@ function run_as_root() {
     dnf install --assumeyes "https://github.com/storytold/pdfcraft/releases/download/v0.6.0/pdfcraft-0.6.0-linux-x86_64.rpm"
     dnf install --assumeyes "https://github.com/storytold/photocraft/releases/download/v0.7.0/photocraft-0.7.0-linux-x86_64.rpm"
     dnf install --assumeyes "https://github.com/storytold/filmcraft/releases/download/v0.6.0/filmcraft-0.6.0-linux-x86_64.rpm"
+
+    # Instalando o TeamViewer
+    dnf install --assumeyes "https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm"
   }
 
   # Instala pacotes snap
