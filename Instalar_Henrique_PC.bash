@@ -102,6 +102,7 @@ function run_as_root() {
     dnf install --assumeyes brasero
     dnf install --assumeyes rclone
     dnf install --assumeyes wireshark
+    dnf install --assumeyes nmap
     dnf install --assumeyes wireguard-tools
     dnf install --assumeyes detox
     dnf install --assumeyes steam
