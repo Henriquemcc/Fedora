@@ -9,7 +9,7 @@ function run_as_root() {
   fi
 
   # Instalando ollama
-  dnf install --assumeyes ollama
+  bash ./Install-Ollama.bash
 
   # Instalando Nvidia Container
   bash ./Install-NvidiaContainer.bash
