@@ -202,9 +202,6 @@ function run_as_root() {
     # Instalando o RetroArch
     flatpak install --assumeyes https://flathub.org/repo/appstream/org.libretro.RetroArch.flatpakref
 
-    # Instalando o Signal
-    flatpak install --assumeyes https://dl.flathub.org/repo/appstream/org.signal.Signal.flatpakref
-
     # Instalando o Free File Sync
     flatpak install --assumeyes https://dl.flathub.org/repo/appstream/org.freefilesync.FreeFileSync.flatpakref
 
@@ -260,6 +257,9 @@ function run_as_root() {
 
   # Instalando o Visual Studio Code
   bash ./Install-VisualStudioCode.bash
+
+  # Instalando o Signal Desktop
+  bash ./Install-SignalDesktop.bash
 
   # Instalando o PowerShell
   bash ./Install-PowerShell.bash
