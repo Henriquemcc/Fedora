@@ -320,6 +320,9 @@ function run_as_root() {
   bash ./Install-GithubCli.bash
 }
 
+# Configurando o sudo
+bash ./ConfigurarSudo.bash
+
 # Configurando o Gnome Shell
 bash ./ConfigurarGnomeShell.bash
 
